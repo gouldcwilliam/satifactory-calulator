@@ -18,7 +18,7 @@ namespace satisfactory_calculator.Materials
 
 		public Items()
 		{
-			Ores = _getOreList();
+			//Ores = _getOreList();
 			FloraAndFauna = _getFloraAndFauna_List();
 			HealingItems = _getHealingItems_List();
 			OtherResources = _getOtherResources_List();
@@ -27,37 +27,7 @@ namespace satisfactory_calculator.Materials
 		}
 
 		// Ores
-		public static Material IronOre = new Material("Iron Ore");
-		public static Material CopperOre = new Material("Copper Ore");
-		public static Material Limestone = new Material("Limestone");
-		public static Material Coal = new Material("Coal");
-		public static Material CrudeOil = new Material("Crude Oil");
-		public static Material CateriumOre = new Material("Caterium Ore");
-		public static Material RawQuartz = new Material("Raw Quartz");
-		public static Material Sulfur = new Material("Sulfur");
-		public static Material Bauxite = new Material("Bauxite");
-		public static Material SAMOre = new Material("S.A.M. Ore");
-		public static Material Silica = new Material("Silica");
-		public static Material Uranium = new Material("Uranium");
 
-		List<Material> _getOreList()
-		{
-			return new List<Material>
-			{
-				IronOre,
-				CopperOre,
-				Limestone,
-				Coal,
-				CrudeOil,
-				CateriumOre,
-				RawQuartz,
-				Sulfur,
-				Bauxite,
-				SAMOre,
-				Silica,
-				Uranium
-			};
-		}
 
 
 		// todo add FloraAndFauna
@@ -77,43 +47,43 @@ namespace satisfactory_calculator.Materials
 		}
 
 		// Components
-		public static readonly Material IronIngot = new Material("Iron Ingot", IronOre, 1);
-		public static readonly Material IronPlate = new Material("Iron Plate", IronIngot, 2);
-		public static readonly Material IronRod = new Material("Iron Rod", IronIngot, 1);
-		public static readonly Material CopperIngot = new Material("Copper Ingot", CopperOre, 1);
-		public static readonly Material Wire = new Material("Wire", CopperIngot, 1);
-		public static readonly Material Cable = new Material("Cable", Wire, 2);
-		public static readonly Material Biomass = new Material("Biomass");
-		public static readonly Material Concrete = new Material("Concrete", Limestone, 3);
-		public static readonly Material Screw = new Material("Screw", IronRod, 1);
-		public static readonly Material ReinforcedIronPlate = new Material("Reinforece Iron Plate", IronPlate, 4, Screw, 24);
-		public static readonly Material Rotor = new Material("Rotor", IronRod, 3, Screw, 22);
-		public static readonly Material ModularFrame = new Material("Modular Frame", ReinforcedIronPlate, 3, IronRod, 6);
-		public static readonly Material SteelIngot = new Material("Steel Ingot", IronOre, 3, Coal, 3);
-		public static readonly Material SteelBeam = new Material("Steel Beam", SteelIngot, 3);
-		public static readonly Material SteelPipe = new Material("Steel Pipe", SteelIngot, 1);
-		public static readonly Material EncasedIndustrialBeam = new Material("Encased Industrial Beam", SteelBeam, 4, Concrete, 5);
+		//public static readonly Material IronIngot = new Material("Iron Ingot", IronOre, 1);
+		//public static readonly Material IronPlate = new Material("Iron Plate", IronIngot, 2);
+		//public static readonly Material IronRod = new Material("Iron Rod", IronIngot, 1);
+		//public static readonly Material CopperIngot = new Material("Copper Ingot", CopperOre, 1);
+		//public static readonly Material Wire = new Material("Wire", CopperIngot, 1);
+		//public static readonly Material Cable = new Material("Cable", Wire, 2);
+		//public static readonly Material Biomass = new Material("Biomass");
+		//public static readonly Material Concrete = new Material("Concrete", Limestone, 3);
+		//public static readonly Material Screw = new Material("Screw", IronRod, 1);
+		//public static readonly Material ReinforcedIronPlate = new Material("Reinforece Iron Plate", IronPlate, 4, Screw, 24);
+		//public static readonly Material Rotor = new Material("Rotor", IronRod, 3, Screw, 22);
+		//public static readonly Material ModularFrame = new Material("Modular Frame", ReinforcedIronPlate, 3, IronRod, 6);
+		//public static readonly Material SteelIngot = new Material("Steel Ingot", IronOre, 3, Coal, 3);
+		//public static readonly Material SteelBeam = new Material("Steel Beam", SteelIngot, 3);
+		//public static readonly Material SteelPipe = new Material("Steel Pipe", SteelIngot, 1);
+		//public static readonly Material EncasedIndustrialBeam = new Material("Encased Industrial Beam", SteelBeam, 4, Concrete, 5);
 
 		List<Material> _getComponents_List()
 		{
 			return new List<Material>
 			{
-				IronIngot,
-				IronPlate,
-				IronRod,
-				CopperIngot,
-				Wire,
-				Cable,
-				Biomass,
-				Concrete,
-				Screw,
-				ReinforcedIronPlate,
-				Rotor,
-				ModularFrame,
-				SteelIngot,
-				SteelBeam,
-				SteelPipe,
-				EncasedIndustrialBeam
+				//IronIngot,
+				//IronPlate,
+				//IronRod,
+				//CopperIngot,
+				//Wire,
+				//Cable,
+				//Biomass,
+				//Concrete,
+				//Screw,
+				//ReinforcedIronPlate,
+				//Rotor,
+				//ModularFrame,
+				//SteelIngot,
+				//SteelBeam,
+				//SteelPipe,
+				//EncasedIndustrialBeam
 			};
 		}
 

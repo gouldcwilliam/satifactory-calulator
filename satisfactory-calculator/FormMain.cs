@@ -29,6 +29,8 @@ namespace satisfactory_calculator
 			pictureBoxSatisfactoryIcon.BringToFront();
 			pictureBoxSatisfactoryIcon.SizeMode = PictureBoxSizeMode.StretchImage;
 			pictureBoxSatisfactoryIcon.Image = Image.FromFile("../../Images/Satisfactory-original.png");
+
+            
 		}
 
 
@@ -39,17 +41,15 @@ namespace satisfactory_calculator
 		[DllImport("User32.dll")]
 		public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
-		private void buttonClose_Click(object sender, EventArgs e)
-		{
-			Environment.Exit(0);
-		}
 
-		private void panelClose_Click(object sender, EventArgs e)
-		{
-			Environment.Exit(0);
-		}
 
-		private void panelMaximize_Click(object sender, EventArgs e)
+
+        #region TOP PANELS
+        private void panelClose_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+        private void panelMaximize_Click(object sender, EventArgs e)
 		{
 			if (WindowState == FormWindowState.Maximized)
 			{
@@ -63,12 +63,10 @@ namespace satisfactory_calculator
 			}
 
 		}
-
-		private void panelMinimize_Click(object sender, EventArgs e)
+        private void panelMinimize_Click(object sender, EventArgs e)
 		{
 			this.WindowState = FormWindowState.Minimized;
 		}
-
 		private void panelButton_MouseEnter(object sender, EventArgs e)
 		{
 			try
@@ -94,7 +92,6 @@ namespace satisfactory_calculator
 			}
 			catch (Exception ex) { Console.WriteLine(ex.Message); }
 		}
-
 		private void panelTop_MouseDown(object sender, MouseEventArgs e)
 		{
 			if (e.Button == MouseButtons.Left)
@@ -103,8 +100,11 @@ namespace satisfactory_calculator
 				SendMessage(Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
 			}
 		}
+        #endregion
 
-		private void buttonAdd_Click(object sender, EventArgs e)
+
+        #region BUTTONS
+        private void buttonAdd_Click(object sender, EventArgs e)
 		{
 		}
 
@@ -113,12 +113,12 @@ namespace satisfactory_calculator
 
 		}
 
-		private void FormMain_Shown(object sender, EventArgs e)
+        #endregion
+
+
+        private void FormMain_Shown(object sender, EventArgs e)
 		{
-			foreach (Material material in Items.Ores)
-			{
-				Console.WriteLine(material.Name);
-			}
-		}
+            Materials.Ores._listProperties();
+        }
 	}
 }

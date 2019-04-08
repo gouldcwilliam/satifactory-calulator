@@ -54,7 +54,8 @@
     </Compile>
     <Compile Include="Items.cs" />
     <Compile Include="Machine.cs" />
-    <Compile Include="Machines.cs" />
+    <Compile Include="Materials\Ores.cs" />
+    <Compile Include="Structures\Machines.cs" />
     <Compile Include="Material.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
