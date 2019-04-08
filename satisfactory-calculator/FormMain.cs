@@ -13,18 +13,27 @@ namespace satisfactory_calculator
 {
 	public partial class FormMain : Form
 	{
+		Building.Machines Machines;
+		Materials.Items Items;
+
 		public FormMain()
 		{
 			InitializeComponent();
-			comboBoxMachines.Items.AddRange(Machines.List.ToArray());
+			Machines = new Building.Machines();
+			Items = new Materials.Items();
+
+			foreach (Machine machine in Machines.List) { comboBoxMachine.Items.Add(machine.Name); }
+			comboBoxMachine.SelectedIndex = 0;
+			for (int i = 1; i < 21; i++) { comboBoxQty.Items.Add(i); }
+			comboBoxQty.SelectedIndex = 0;
 			pictureBoxSatisfactoryIcon.BringToFront();
 			pictureBoxSatisfactoryIcon.SizeMode = PictureBoxSizeMode.StretchImage;
 			pictureBoxSatisfactoryIcon.Image = Image.FromFile("../../Images/Satisfactory-original.png");
 		}
 
+
 		public const int WM_NCLBUTTONDOWN = 0xA1;
 		public const int HTCAPTION = 0x2;
-		//[DllImport("C:\\Windows\\System32\\User32.dll")]
 		[DllImport("User32.dll")]
 		public static extern bool ReleaseCapture();
 		[DllImport("User32.dll")]
@@ -95,9 +104,21 @@ namespace satisfactory_calculator
 			}
 		}
 
-		private void panelTop_Enter(object sender, EventArgs e)
+		private void buttonAdd_Click(object sender, EventArgs e)
+		{
+		}
+
+		private void buttonEdit_Click(object sender, EventArgs e)
 		{
 
+		}
+
+		private void FormMain_Shown(object sender, EventArgs e)
+		{
+			foreach (Material material in Items.Ores)
+			{
+				Console.WriteLine(material.Name);
+			}
 		}
 	}
 }

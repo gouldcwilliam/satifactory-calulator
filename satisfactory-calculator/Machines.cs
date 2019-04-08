@@ -4,69 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace satisfactory_calculator
+namespace satisfactory_calculator.Building
 {
-	class Machine
+	class Machines
 	{
-		// Constructors
-		public Machine() { }
-		public Machine(string name, int powerUsage, List<Material> ingredients)
-		{
-			Name = name;
-			PowerUsage = powerUsage;
-			Ingredients = ingredients;
-		}
-		public Machine(string name, Material inputMaterial, Material outputMaterial, int powerUsage, List<Material> ingredients)
-		{
-			Name = name;
-			InputMaterial = inputMaterial;
-			OutputMaterial = outputMaterial;
-			PowerUsage = powerUsage;
-			Ingredients = ingredients;
-		}
-
-		// Private Properties
-		string _name;
-		Material _inputMaterial;
-		Material _outputMaterial;
-		int _powerUsage;
-		List<Material> _ingredients;
-
-		// Public Properties
-		public string Name
-		{
-			get { return _name; }
-			set { _name = value; }
-		}
-		public Material InputMaterial
-		{
-			get { return _inputMaterial; }
-			set { _inputMaterial = value; }
-		}
-		public Material OutputMaterial
-		{
-			get { return _outputMaterial; }
-			set { _outputMaterial = value; }
-		}
-		public int PowerUsage
-		{
-			get { return _powerUsage; }
-			set { _powerUsage = value; }
-		}
-		public List<Material> Ingredients
-		{
-			get { return _ingredients; }
-			set { _ingredients = value; }
-		}
-
-
-
-		// Method Overrides
-		public override string ToString()
-		{
-			return Name;
-		}
-
 		public readonly List<Machine> List = new List<Machine>
 		{
 			MinerMk1,
@@ -146,3 +87,4 @@ namespace satisfactory_calculator
 			});
 	}
 }
+

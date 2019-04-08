@@ -52,7 +52,9 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Items.cs" />
     <Compile Include="Machine.cs" />
+    <Compile Include="Machines.cs" />
     <Compile Include="Material.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,5 +105,6 @@
   <ItemGroup>
     <None Include="Images\restore-16x16-grey.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
