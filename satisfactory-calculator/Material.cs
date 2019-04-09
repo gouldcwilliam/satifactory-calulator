@@ -9,6 +9,7 @@ namespace satisfactory_calculator
 	class Material
 	{
 		// Constructors
+        public Material() {; }
 		public Material(string name)
 		{
 			new Material(name, 0);
@@ -29,10 +30,10 @@ namespace satisfactory_calculator
 		}
 
 
-		// Private Properties
-		string _name;
-		int _qty;
-		List<Material> _ingredients;
+        // Private Properties
+        string _name;
+        int _qty;
+        List<Material> _ingredients;
 
 
 		// Public Properties
@@ -52,11 +53,6 @@ namespace satisfactory_calculator
 			set { _ingredients = value; }
 		}
 
-
-		// Method Overrides
-		public override string ToString()
-		{
-			return Name;
-		}
+        
 	}
 }

@@ -118,7 +118,10 @@ namespace satisfactory_calculator
 
         private void FormMain_Shown(object sender, EventArgs e)
 		{
-            Materials.Ores._listProperties();
+            foreach(Material material in Materials.Ores.ListAll)
+            {
+                Console.WriteLine(material.Name);
+            }
         }
 	}
 }

@@ -8,7 +8,6 @@ namespace satisfactory_calculator.Materials
 {
 	class Items
 	{
-		public List<Material> Ores;
 		public List<Material> FloraAndFauna;
 		public List<Material> HealingItems;
 		public List<Material> OtherResources;

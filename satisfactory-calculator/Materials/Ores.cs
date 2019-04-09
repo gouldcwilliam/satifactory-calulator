@@ -42,14 +42,16 @@ namespace satisfactory_calculator.Materials
         //static List<Material> _listProperties()
         public static void _listProperties()
         {
-            foreach (System.Reflection.MemberInfo member in Type.GetType("satisfactory_calculator.Materials.Ores").GetMembers())
+            List<Material> returnList = new List<Material>();
+            Material material = new Material();
+
+            foreach(System.Reflection.FieldInfo field in Type.GetType("satisfactory_calculator.Materials.Ores").GetFields())
             {
-                if (member.ToString().Contains("satisfactory_calculator.Material"))
+                if (field.ToString().Contains("satisfactory_calculator.Material"))
                 {
-                    Console.WriteLine("Match!");
+                    returnList.Add((Material)field.GetValue(material));
                 }
             }
-
         }
     }
 }
