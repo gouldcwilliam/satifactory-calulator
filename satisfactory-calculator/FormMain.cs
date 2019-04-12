@@ -13,18 +13,13 @@ namespace satisfactory_calculator
 {
 	public partial class FormMain : Form
 	{
-		Building.Machines Machines;
-		Materials.Items Items;
-
 		public FormMain()
 		{
 			InitializeComponent();
-			Machines = new Building.Machines();
-			Items = new Materials.Items();
 
-			foreach (Machine machine in Machines.List) { comboBoxMachine.Items.Add(machine.Name); }
-			comboBoxMachine.SelectedIndex = 0;
-			for (int i = 1; i < 21; i++) { comboBoxQty.Items.Add(i); }
+            foreach (Machine machine in Structures.Machines.ListAll) { comboBoxMachine.Items.Add(machine.Name); }
+            comboBoxMachine.SelectedIndex = 0;
+            for (int i = 1; i < 21; i++) { comboBoxQty.Items.Add(i); }
 			comboBoxQty.SelectedIndex = 0;
 			pictureBoxSatisfactoryIcon.BringToFront();
 			pictureBoxSatisfactoryIcon.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -106,7 +101,8 @@ namespace satisfactory_calculator
         #region BUTTONS
         private void buttonAdd_Click(object sender, EventArgs e)
 		{
-		}
+            test();
+        }
 
 		private void buttonEdit_Click(object sender, EventArgs e)
 		{
@@ -116,12 +112,21 @@ namespace satisfactory_calculator
         #endregion
 
 
+        private void test()
+        {
+            foreach (Material material in Materials.Ores.ListAll)
+            {
+                Console.WriteLine("Ore: " + material.Name);
+            }
+            foreach (Material material in Materials.Components.EncasedIndustrialBeam.Ingredients)
+            {
+                Console.WriteLine("Component: " + material.Name + " " + material.Qty);
+            }
+        }
+
         private void FormMain_Shown(object sender, EventArgs e)
 		{
-            foreach(Material material in Materials.Ores.ListAll)
-            {
-                Console.WriteLine(material.Name);
-            }
+            
         }
 	}
 }

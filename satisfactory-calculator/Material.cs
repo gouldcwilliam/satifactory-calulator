@@ -12,15 +12,28 @@ namespace satisfactory_calculator
         public Material() {; }
 		public Material(string name)
 		{
-			new Material(name, 0);
+            Name = name;
 		}
 		public Material(string name, int qty)
 		{
-			new Material(name, new List<Material>(), qty);
+            Name = name;
+            Qty = qty;
 		}
+        public Material(string name, Material ingredient)
+        {
+            Name = name;
+            Ingredients = new List<Material> { ingredient };
+        }
         public Material(string name, Material ingredient, int qty)
         {
-            new Material(name, new List<Material> { ingredient }, qty);
+            Name = name;
+            Ingredients = new List<Material> { ingredient };
+            Qty = qty;
+        }
+        public Material(string name, List<Material> ingredients)
+        {
+            Name = name;
+            Ingredients = ingredients;
         }
 		public Material(string name, List<Material> ingredients, int qty)
 		{
@@ -28,12 +41,30 @@ namespace satisfactory_calculator
 			Ingredients = ingredients;
 			Qty = qty;
 		}
+        public Material(Material material, int qty)
+        {
+            Name = material.Name;
+            Qty = qty;
+            Ingredients = material.Ingredients;
+        }
+        public Material(Material material, List<Material> ingredients)
+        {
+            Name = material.Name;
+            Qty = material.Qty;
+            Ingredients = ingredients;
+        }
+        public Material(Material material, List<Material> ingredients, int qty)
+        {
+            Name = material.Name;
+            Qty = qty;
+            Ingredients = ingredients;
+        }
 
 
         // Private Properties
-        string _name;
-        int _qty;
-        List<Material> _ingredients;
+        string _name = string.Empty;
+        int _qty = 0;
+        List<Material> _ingredients = new List<Material>();
 
 
 		// Public Properties
@@ -53,6 +84,10 @@ namespace satisfactory_calculator
 			set { _ingredients = value; }
 		}
 
-        
-	}
+        public override string ToString()
+        {
+            return Name;
+        }
+
+    }
 }

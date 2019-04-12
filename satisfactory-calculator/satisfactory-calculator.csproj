@@ -52,8 +52,8 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Items.cs" />
     <Compile Include="Machine.cs" />
+    <Compile Include="Materials\Components.cs" />
     <Compile Include="Materials\Ores.cs" />
     <Compile Include="Structures\Machines.cs" />
     <Compile Include="Material.cs" />
