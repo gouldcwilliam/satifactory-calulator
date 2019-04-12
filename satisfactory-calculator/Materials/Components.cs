@@ -49,6 +49,7 @@ namespace satisfactory_calculator.Materials
         public static Material SteelBeam = new Material("Steel Beam", SteelIngot, 3);
         public static Material SteelPipe = new Material("Steel Pipe", SteelIngot, 1);
         public static Material EncasedIndustrialBeam = new Material("Encased Industrial Beam", new List<Material> { new Material(SteelBeam, 4), new Material(Concrete, 5) });
+        public static Material CateriumIngot = new Material("Caterium Ingot", Ores.CateriumOre, 1);
 
     }
 }

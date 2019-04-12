@@ -29,21 +29,24 @@ namespace satisfactory_calculator
 		}
 
 
-		public const int WM_NCLBUTTONDOWN = 0xA1;
-		public const int HTCAPTION = 0x2;
-		[DllImport("User32.dll")]
-		public static extern bool ReleaseCapture();
-		[DllImport("User32.dll")]
-		public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-
-
 
 
         #region TOP PANELS
+
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HTCAPTION = 0x2;
+        [DllImport("User32.dll")]
+        public static extern bool ReleaseCapture();
+        [DllImport("User32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+
+
         private void panelClose_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
         }
+
+
         private void panelMaximize_Click(object sender, EventArgs e)
 		{
 			if (WindowState == FormWindowState.Maximized)
@@ -124,9 +127,5 @@ namespace satisfactory_calculator
             }
         }
 
-        private void FormMain_Shown(object sender, EventArgs e)
-		{
-            
-        }
 	}
 }
