@@ -13,13 +13,22 @@ namespace satisfactory_calculator
 {
 	public partial class FormMain : Form
 	{
+		public List<Machine> MyMachines;
+
 		public FormMain()
 		{
 			InitializeComponent();
+
 			pictureBoxSatisfactoryIcon.BringToFront();
 			pictureBoxSatisfactoryIcon.SizeMode = PictureBoxSizeMode.StretchImage;
 			pictureBoxSatisfactoryIcon.Image = Image.FromFile("../../Images/Satisfactory-original.png");
-            
+
+			foreach (Machine machine in BuilderClass.Machines.GetMachines())
+			{
+				comboBoxMachine.Items.Add(machine.Name);
+			}
+			comboBoxMachine.SelectedIndex = 0;
+
 		}
 
 
@@ -92,14 +101,31 @@ namespace satisfactory_calculator
 				SendMessage(Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
 			}
 		}
-        #endregion
+		#endregion
 
 
-        #region BUTTONS
-        private void buttonAdd_Click(object sender, EventArgs e)
+		#region BUTTONS
+		private void buttonAdd_Click(object sender, EventArgs e)
 		{
-            test();
-        }
+			if (!comboBoxMachine.Items.Contains(comboBoxMachine.Text))
+			{
+				MessageBox.Show(string.Format("Invalid Machine: ' {0} '", comboBoxMachine.Text));
+				return;
+			}
+			Console.WriteLine("comboBoxMachine.Text: {0}", comboBoxMachine.Text);
+			if (! (101 > numericUpDownQty.Value) &&(numericUpDownQty.Value > 0))
+			{
+				MessageBox.Show(string.Format("Invalid Qty: {0}", numericUpDownQty.Value));
+				return;
+			}
+			Console.WriteLine("numericUpDownQty.Value contains: {0}", numericUpDownQty.Value);
+			if (!comboBoxResource.Items.Contains(comboBoxResource.Text))
+			{
+				MessageBox.Show(string.Format("Invalid Resource: ' {0} '",comboBoxResource.Text));
+				return;
+			}
+			Console.WriteLine("comboBoxResource.Text contains: {0}", comboBoxResource.Text);
+		}
 
 		private void buttonEdit_Click(object sender, EventArgs e)
 		{
@@ -111,28 +137,31 @@ namespace satisfactory_calculator
 
         private void test()
         {
-            Functions.WriteToXmlFile<List<Machine>>("Machines.xml", Structures.Machines.ListAll);
-            foreach (Material material in Materials.Ores.ListAll)
-            {
-                Console.WriteLine("Ore: " + material.Name);
-            }
-            foreach (Material material in Materials.Components.EncasedIndustrialBeam.Ingredients)
-            {
-                Console.WriteLine("Component: " + material.Name + " " + material.Qty);
-            }
+			Functions.WriteToXmlFile<List<Machine>>("Machines.xml", BuilderClass.Machines.GetMachines());
+			foreach (Machine machine in BuilderClass.Machines.GetMachines())
+			{
+				Console.WriteLine("machine: {0}", machine.Name);
+				foreach (Recipe recipe in machine.AvailableRecipes)
+				{
+					Console.WriteLine("\trecipe:  {0}", recipe.Name);
+					Console.WriteLine("\t\toutput material: {0}, {1}", recipe.OutputMaterial.Name, recipe.OutputMaterial.Qty);
+					foreach (Material material in recipe.InputMaterials)
+					{
+						Console.WriteLine("\t\tinput material: {0} {1}", material.Name, material.Qty);
+					}
+
+				}
+			}
         }
 
 		private void comboBoxMachine_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			Console.WriteLine(comboBoxMachine.SelectedItem);
 			comboBoxResource.Items.Clear();
-
-			foreach (Machine machine in Structures.Machines.ListAll.FindAll( m=> m.Name == comboBoxMachine.SelectedItem.ToString()))
+			foreach (Recipe recipe in BuilderClass.Machines.GetMachines().Find(x => x.Name == comboBoxMachine.Text).AvailableRecipes)
 			{
-				Console.WriteLine(machine.Name);
-
-				
+				comboBoxResource.Items.Add(recipe.Name);
 			}
+			comboBoxResource.SelectedIndex = 0;
 		}
 	}
 }

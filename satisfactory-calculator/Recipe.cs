@@ -24,10 +24,36 @@ namespace satisfactory_calculator
             OutputMaterial = outputMaterial;
             InputMaterials = inputMaterials;
         }
+		public Recipe(string name, Material outputMaterial, double outputQty,
+			Material input1, int qty1, 	
+			Material input2 = null, double qty2 = 0, 
+			Material input3 = null, double qty3 = 0, 
+			Material input4 = null, double qty4 = 0 )
+		{
+			Name = name;
+			OutputMaterial = new Material(outputMaterial, outputQty);
+			if ((input1 != null) && (qty1 > 0)) { InputMaterials.Add(new Material(input1, qty1)); }
+			if ((input2 != null) && (qty2 > 0)) { InputMaterials.Add(new Material(input2, qty2)); }
+			if ((input3 != null) && (qty3 > 0)) { InputMaterials.Add(new Material(input3, qty3)); }
+			if ((input4 != null) && (qty4 > 0)) { InputMaterials.Add(new Material(input4, qty4)); }
+		}
+		public Recipe(Material outputMaterial, double outputQty,
+			Material input1, double qty1,
+			Material input2 = null, double qty2 = 0,
+			Material input3 = null, double qty3 = 0,
+			Material input4 = null, double qty4 = 0)
+		{
+			Name = outputMaterial.Name;
+			OutputMaterial = new Material(outputMaterial, outputQty);
+			if ((input1 != null) && (qty1 > 0)) { InputMaterials.Add(new Material(input1, qty1)); }
+			if ((input2 != null) && (qty2 > 0)) { InputMaterials.Add(new Material(input2, qty2)); }
+			if ((input3 != null) && (qty3 > 0)) { InputMaterials.Add(new Material(input3, qty3)); }
+			if ((input4 != null) && (qty4 > 0)) { InputMaterials.Add(new Material(input4, qty4)); }
+		}
 
-        public string Name = string.Empty;
-        public List<Material> InputMaterials = new List<Material>();
+		public string Name = string.Empty;
         public Material OutputMaterial = new Material();
+        public List<Material> InputMaterials = new List<Material>();
 
 
     }

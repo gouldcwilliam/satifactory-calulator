@@ -47,7 +47,6 @@
 			this.pictureBoxSatisfactoryIcon = new System.Windows.Forms.PictureBox();
 			this.groupBoxMachine = new System.Windows.Forms.GroupBox();
 			this.groupBoxQty = new System.Windows.Forms.GroupBox();
-			this.comboBoxQty = new System.Windows.Forms.ComboBox();
 			this.groupBoxResource = new System.Windows.Forms.GroupBox();
 			this.comboBoxResource = new System.Windows.Forms.ComboBox();
 			this.buttonAdd = new System.Windows.Forms.Button();
@@ -59,6 +58,7 @@
 			this.columnResource = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.columnOutput = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.columnInput = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.numericUpDownQty = new System.Windows.Forms.NumericUpDown();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewMachines)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxSatisfactoryIcon)).BeginInit();
 			this.groupBoxMachine.SuspendLayout();
@@ -66,6 +66,7 @@
 			this.groupBoxResource.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridMachineInput)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewTotals)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownQty)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// comboBoxMachine
@@ -209,24 +210,13 @@
 			// 
 			// groupBoxQty
 			// 
-			this.groupBoxQty.Controls.Add(this.comboBoxQty);
+			this.groupBoxQty.Controls.Add(this.numericUpDownQty);
 			this.groupBoxQty.Location = new System.Drawing.Point(728, 58);
 			this.groupBoxQty.Name = "groupBoxQty";
 			this.groupBoxQty.Size = new System.Drawing.Size(62, 52);
 			this.groupBoxQty.TabIndex = 10;
 			this.groupBoxQty.TabStop = false;
 			this.groupBoxQty.Text = "Qty";
-			// 
-			// comboBoxQty
-			// 
-			this.comboBoxQty.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.comboBoxQty.FormattingEnabled = true;
-			this.comboBoxQty.Location = new System.Drawing.Point(6, 19);
-			this.comboBoxQty.Name = "comboBoxQty";
-			this.comboBoxQty.Size = new System.Drawing.Size(50, 21);
-			this.comboBoxQty.TabIndex = 0;
 			// 
 			// groupBoxResource
 			// 
@@ -363,6 +353,26 @@
 			this.columnInput.HeaderText = "Input";
 			this.columnInput.Name = "columnInput";
 			// 
+			// numericUpDownQty
+			// 
+			this.numericUpDownQty.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.numericUpDownQty.Location = new System.Drawing.Point(6, 20);
+			this.numericUpDownQty.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.numericUpDownQty.Name = "numericUpDownQty";
+			this.numericUpDownQty.Size = new System.Drawing.Size(50, 20);
+			this.numericUpDownQty.TabIndex = 17;
+			this.numericUpDownQty.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			// 
 			// FormMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -392,6 +402,7 @@
 			this.groupBoxResource.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridMachineInput)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewTotals)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownQty)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -407,7 +418,6 @@
 		private System.Windows.Forms.Panel panelMinimize;
 		private System.Windows.Forms.GroupBox groupBoxMachine;
 		private System.Windows.Forms.GroupBox groupBoxQty;
-		private System.Windows.Forms.ComboBox comboBoxQty;
 		private System.Windows.Forms.GroupBox groupBoxResource;
 		private System.Windows.Forms.ComboBox comboBoxResource;
 		private System.Windows.Forms.Button buttonAdd;
@@ -423,6 +433,7 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn columnResource;
 		private System.Windows.Forms.DataGridViewTextBoxColumn columnOutput;
 		private System.Windows.Forms.DataGridViewTextBoxColumn columnInput;
+		private System.Windows.Forms.NumericUpDown numericUpDownQty;
 	}
 }
 

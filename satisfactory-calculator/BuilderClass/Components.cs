@@ -4,13 +4,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace satisfactory_calculator.Materials
+namespace satisfactory_calculator.BuilderClass
 {
-    static class Components
+    public static class Components
     {
-        static Components()
+        public static Material IronIngot = new Material("Iron Ingot");
+        public static Material IronPlate = new Material("Iron Plate");
+        public static Material IronRod = new Material("Iron Rod");
+        public static Material CopperIngot = new Material("Copper Ingot");
+        public static Material Wire = new Material("Wire");
+        public static Material Cable = new Material("Cable");
+        public static Material Biomass = new Material("Biomass");
+        public static Material Concrete = new Material("Concrete");
+        public static Material Screw = new Material("Screw");
+        public static Material ReinforcedIronPlate = new Material("Reinforeced Iron Plate");
+        public static Material Rotor = new Material("Rotor");
+        public static Material ModularFrame = new Material("Modular Frame");
+        public static Material SteelIngot = new Material("Steel Ingot");
+        public static Material SteelBeam = new Material("Steel Beam");
+        public static Material SteelPipe = new Material("Steel Pipe");
+        public static Material EncasedIndustrialBeam = new Material("Encased Industrial Beam");
+        public static Material CateriumIngot = new Material("Caterium Ingot");
+		public static Material Leaves = new Material("Leaves");
+		public static Material Wood = new Material("Wood");
+		public static Material Mycelia = new Material("Mycelia");
+		public static Material FlowerPetals = new Material("Flower Petals");
+		public static Material ColorCartridge = new Material("Color Cartridge");
+		public static Material SpikedRebar = new Material("Spike Rebar");
+		public static Material QuickWire = new Material("Quickwire");
+		public static Material BioFuel = new Material("Biofuel");
+		public static Material GreenPowerSlug = new Material("Green Power Slug");
+		public static Material YellowPowerSlug = new Material("Yellow Power Slug");
+		public static Material PurplePowerSlug = new Material("Purple Power Slug");
+		public static Material PowerShard = new Material("Power Shard");
+		public static Material Carpace = new Material("Carpace");
+
+		public static List<Material> GetMaterials()
         {
-            ListAll = new List<Material>
+            return new List<Material>
             {
                 IronIngot,
                 IronPlate,
@@ -27,29 +58,23 @@ namespace satisfactory_calculator.Materials
                 SteelIngot,
                 SteelBeam,
                 SteelPipe,
-                EncasedIndustrialBeam
+                EncasedIndustrialBeam,
+				CateriumIngot,
+				Leaves,
+				Wood,
+				Mycelia,
+				FlowerPetals,
+				ColorCartridge,
+				SpikedRebar,
+				QuickWire,
+				BioFuel,
+				GreenPowerSlug,
+				YellowPowerSlug,
+				PurplePowerSlug,
+				PowerShard,
+				Carpace
             };
         }
-
-        public static List<Material> ListAll;
-
-        public static Material IronIngot = new Material("Iron Ingot", new Material(Ores.IronOre, 1));
-        public static Material IronPlate = new Material("Iron Plate", IronIngot, 2);
-        public static Material IronRod = new Material("Iron Rod", IronIngot, 1);
-        public static Material CopperIngot = new Material("Copper Ingot", Ores.CopperOre, 1);
-        public static Material Wire = new Material("Wire", CopperIngot, 1);
-        public static Material Cable = new Material("Cable", Wire, 2);
-        public static Material Biomass = new Material("Biomass");
-        public static Material Concrete = new Material("Concrete", Ores.Limestone, 3);
-        public static Material Screw = new Material("Screw", IronRod, 1);
-        public static Material ReinforcedIronPlate = new Material("Reinforece Iron Plate", new List<Material> { new Material(IronPlate, 4), new Material(Screw, 24) });
-        public static Material Rotor = new Material("Rotor", new List<Material> { new Material(IronRod, 3), new Material(Screw, 22) });
-        public static Material ModularFrame = new Material("Modular Frame", new List<Material> { new Material(ReinforcedIronPlate, 3), new Material(IronRod, 6) });
-        public static Material SteelIngot = new Material("Steel Ingot", new List<Material> { new Material(Ores.IronOre, 3), new Material(Ores.Coal, 3) });
-        public static Material SteelBeam = new Material("Steel Beam", SteelIngot, 3);
-        public static Material SteelPipe = new Material("Steel Pipe", SteelIngot, 1);
-        public static Material EncasedIndustrialBeam = new Material("Encased Industrial Beam", new List<Material> { new Material(SteelBeam, 4), new Material(Concrete, 5) });
-        public static Material CateriumIngot = new Material("Caterium Ingot", Ores.CateriumOre, 1);
 
     }
 }

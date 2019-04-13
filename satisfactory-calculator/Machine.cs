@@ -1,0 +1,52 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace satisfactory_calculator
+{
+	public partial class Machine : Structure
+	{
+        public double PowerUsage;
+        public Recipe CurrentRecipe;
+		public List<Recipe> AvailableRecipes;
+
+		// Constructors
+		public Machine() { }
+		public Machine(string name, List<Material> ingredients, double powerUsage)
+		{
+			Name = name;
+			PowerUsage = powerUsage;
+			Ingredients = ingredients;
+		}
+		public Machine(string name, List<Material> ingredients, double powerUsage, Recipe recipe)
+		{
+			Name = name;
+			Ingredients = ingredients;
+			PowerUsage = powerUsage;
+			CurrentRecipe = recipe;
+		}
+		public Machine(string name, List<Material> ingredients, double powerUsage, List<Recipe> availableRecipes)
+		{
+			Name = name;
+			Ingredients = ingredients;
+			PowerUsage = powerUsage;
+			AvailableRecipes = availableRecipes;
+		}
+		public Machine(string name, List<Material> ingredients, double powerUsage, List<Recipe> availableRecipes, Recipe recipe )
+		{
+			Name = name;
+			Ingredients = ingredients;
+			PowerUsage = powerUsage;
+			CurrentRecipe = recipe;
+			AvailableRecipes = availableRecipes;
+		}
+
+		public override string ToString()
+		{
+			return Name;
+		}
+
+	}
+}

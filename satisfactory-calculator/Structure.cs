@@ -16,5 +16,10 @@ namespace satisfactory_calculator
         {
             Name = name;
         }
-    }
+
+		public override string ToString()
+		{
+			return Name;
+		}
+	}
 }

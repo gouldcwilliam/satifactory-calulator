@@ -61,13 +61,5 @@ namespace satisfactory_calculator
         }
 
 
-        public static List<Recipe> getSmelterRecipes()
-        {
-            List<Recipe> recipes = new List<Recipe>();
-
-            return recipes;
-        }
-
-
     }
 }

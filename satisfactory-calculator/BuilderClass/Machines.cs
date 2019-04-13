@@ -4,27 +4,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace satisfactory_calculator.Structures
+namespace satisfactory_calculator.BuilderClass
 {
-	static class Machines
+	public static class Machines
 	{
 
-        static Machines()
-        {
-            ListAll = new List<Machine>
-            {
-                //MinerMk1,
-                //MinerMk2,
-                //OilPump,
-                //Smelter,
-                //Foundry,
-                //OilRefinery,
-                //Constructor,
-                //Assembler,
-                //Manufacturer
-            };
-        }
-        public static List<Machine> ListAll;
+		public static Machine Smelter()
+		{
+			string name = "Smelter";
+			List<Material> ingredients = new List<Material>
+			{
+				new Material(Components.IronRod, 5),
+				new Material(Components.Wire, 8)
+			};
+			int powerUsage = 4;
+			List<Recipe> availableRecipes = SmelterRecipes.GetRecipes();
+			Recipe recipe = new Recipe();
+			return new Machine(name, ingredients, powerUsage, availableRecipes, recipe);
+		}
+		public static Machine Constructor()
+		{
+			string name = "Constructor";
+			List<Material> ingredients = new List<Material>
+			{
+				new Material(Components.ReinforcedIronPlate, 3),
+				new Material(Components.Cable, 2)
+			};
+			int powerUsage = 4;
+			List<Recipe> availableRecipes = ConstructorRecipes.GetRecipes();
+			Recipe recipe = new Recipe();
+			return new Machine(name, ingredients, powerUsage, availableRecipes, recipe);
+		}
 
 		// Public Static Read Onlys
 		//public static Machine MinerMk1 = new Machine("Miner Mk.1", 5,
@@ -48,12 +58,6 @@ namespace satisfactory_calculator.Structures
 		//		new Material("Motor", 3),
 		//		new Material("Cable", 10)
 		//	});
-		//public static Machine Smelter = new Machine("Smelter", 4, Recipes.Smelter.IronIngots,
-		//	new List<Material>
-		//	{
-		//		new Material("Iron Rod", 5),
-		//		new Material("Wire", 8)
-		//	});
 		//public static Machine Foundry = new Machine("Foundry", 16,
 		//	new List<Material>
 		//	{
@@ -68,12 +72,6 @@ namespace satisfactory_calculator.Structures
 		//		new Material("Motor", 5),
 		//		new Material("Steel Pipe", 20),
 		//		new Material("Cable", 20)
-		//	});
-		//public static Machine Constructor = new Machine("Constructor", 4,
-		//	new List<Material>
-		//	{
-		//		new Material("Reinforced Iron Plate", 3),
-		//		new Material("Cable", 2)
 		//	});
 		//public static Machine Assembler = new Machine("Assembler", 15,
 		//	new List<Material>
@@ -90,6 +88,22 @@ namespace satisfactory_calculator.Structures
 		//		new Material("Cable", 25),
 		//		new Material("Computer", 3)
 		//	});
+
+		public static List<Machine> GetMachines()
+		{
+			return new List<Machine>
+			{
+				//MinerMk1,
+				//MinerMk2,
+				//OilPump,
+				Smelter(),
+				//Foundry,
+				//OilRefinery,
+				Constructor(),
+				//Assembler,
+				//Manufacturer
+			};
+		}
 	}
 }
 
