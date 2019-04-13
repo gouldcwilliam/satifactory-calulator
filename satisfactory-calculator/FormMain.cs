@@ -16,11 +16,6 @@ namespace satisfactory_calculator
 		public FormMain()
 		{
 			InitializeComponent();
-
-            foreach (Machine machine in Structures.Machines.ListAll) { comboBoxMachine.Items.Add(machine.Name); }
-            comboBoxMachine.SelectedIndex = 0;
-            for (int i = 1; i < 21; i++) { comboBoxQty.Items.Add(i); }
-			comboBoxQty.SelectedIndex = 0;
 			pictureBoxSatisfactoryIcon.BringToFront();
 			pictureBoxSatisfactoryIcon.SizeMode = PictureBoxSizeMode.StretchImage;
 			pictureBoxSatisfactoryIcon.Image = Image.FromFile("../../Images/Satisfactory-original.png");
@@ -116,6 +111,7 @@ namespace satisfactory_calculator
 
         private void test()
         {
+            Functions.WriteToXmlFile<List<Machine>>("Machines.xml", Structures.Machines.ListAll);
             foreach (Material material in Materials.Ores.ListAll)
             {
                 Console.WriteLine("Ore: " + material.Name);
@@ -133,11 +129,8 @@ namespace satisfactory_calculator
 
 			foreach (Machine machine in Structures.Machines.ListAll.FindAll( m=> m.Name == comboBoxMachine.SelectedItem.ToString()))
 			{
-				foreach (Recipe recipe in Recipes.Smelter.Recipes)
-				{
-					comboBoxResource.Items.Add(recipe.Name);
-					comboBoxResource.SelectedIndex = 0;
-				}
+				Console.WriteLine(machine.Name);
+
 				
 			}
 		}

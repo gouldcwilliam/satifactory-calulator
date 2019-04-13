@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace satisfactory_calculator
 {
-	class Material
+	public class Material
 	{
 		// Constructors
         public Material() {; }

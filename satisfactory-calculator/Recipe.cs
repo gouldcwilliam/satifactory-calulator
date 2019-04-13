@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace satisfactory_calculator
 {
-    class Recipe
+    public class Recipe
     {
         public Recipe()
         {
@@ -18,36 +18,16 @@ namespace satisfactory_calculator
 			OutputMaterial = outputMaterial;
 			InputMaterials = new List<Material> { inputMaterial };
 		}
-		public Recipe(Material outputMaterial, Material inputMaterial)
+        public Recipe(string name, Material outputMaterial, List<Material> inputMaterials)
         {
-            OutputMaterial = outputMaterial;
-            InputMaterials = new List<Material> { inputMaterial };
-        }
-        public Recipe(Material outputMaterial, List<Material> inputMaterials)
-        {
+            Name = name;
             OutputMaterial = outputMaterial;
             InputMaterials = inputMaterials;
         }
 
-		private string _name = string.Empty;
-        private List<Material> _inputMaterials = new List<Material>();
-        private Material _outputMaterial = new Material();
-
-		public string Name
-		{
-			get { return _name; }
-			set { _name = Name; }
-		}
-        public List<Material> InputMaterials
-        {
-            get { return _inputMaterials; }
-            set { _inputMaterials = value; }
-        }
-        public Material OutputMaterial
-        {
-            get { return _outputMaterial; }
-            set { _outputMaterial = value; }
-        }
+        public string Name = string.Empty;
+        public List<Material> InputMaterials = new List<Material>();
+        public Material OutputMaterial = new Material();
 
 
     }
