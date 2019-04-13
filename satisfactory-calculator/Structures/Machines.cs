@@ -48,7 +48,7 @@ namespace satisfactory_calculator.Structures
 				new Material("Motor", 3),
 				new Material("Cable", 10)
 			});
-		public static Machine Smelter = new Machine("Smelter", 4,
+		public static Machine Smelter = new Machine("Smelter", 4, Recipes.Smelter.IronIngots,
 			new List<Material>
 			{
 				new Material("Iron Rod", 5),

@@ -8,8 +8,19 @@ namespace satisfactory_calculator.Recipes
 {
     static class Smelter
     {
-        public static Recipe IronIngots = new Recipe(new Material(Materials.Components.IronIngot, 30), new Material(Materials.Ores.IronOre, 30));
-        public static Recipe CopperIngots = new Recipe(new Material(Materials.Components.CopperIngot, 30), new Material(Materials.Ores.CopperOre, 30));
-        public static Recipe CateriumIngot = new Recipe(new Material(Materials.Components.CateriumIngot, 30), new Material(Materials.Ores.CateriumOre, 30));
+		static Smelter()
+		{
+			Recipes = new List<Recipe>
+			{
+				IronIngots,
+				CopperIngots,
+				CateriumIngot
+			};
+		}
+		public static List<Recipe> Recipes;
+
+        public static Recipe IronIngots = new Recipe("Iron Ingots", new Material(Materials.Components.IronIngot, 30), new Material(Materials.Ores.IronOre, 30));
+        public static Recipe CopperIngots = new Recipe("Copper Ingots", new Material(Materials.Components.CopperIngot, 30), new Material(Materials.Ores.CopperOre, 30));
+        public static Recipe CateriumIngot = new Recipe("Caterium Ingots", new Material(Materials.Components.CateriumIngot, 60), new Material(Materials.Ores.CateriumOre, 15));
     }
 }

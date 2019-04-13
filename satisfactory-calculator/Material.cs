@@ -89,5 +89,6 @@ namespace satisfactory_calculator
             return Name;
         }
 
+
     }
 }

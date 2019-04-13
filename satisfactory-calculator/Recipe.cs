@@ -12,7 +12,13 @@ namespace satisfactory_calculator
         {
             ;
         }
-        public Recipe(Material outputMaterial, Material inputMaterial)
+		public Recipe(string name, Material outputMaterial, Material inputMaterial)
+		{
+			Name = name;
+			OutputMaterial = outputMaterial;
+			InputMaterials = new List<Material> { inputMaterial };
+		}
+		public Recipe(Material outputMaterial, Material inputMaterial)
         {
             OutputMaterial = outputMaterial;
             InputMaterials = new List<Material> { inputMaterial };
@@ -23,19 +29,26 @@ namespace satisfactory_calculator
             InputMaterials = inputMaterials;
         }
 
+		private string _name = string.Empty;
         private List<Material> _inputMaterials = new List<Material>();
         private Material _outputMaterial = new Material();
 
-        List<Material> InputMaterials
+		public string Name
+		{
+			get { return _name; }
+			set { _name = Name; }
+		}
+        public List<Material> InputMaterials
         {
             get { return _inputMaterials; }
             set { _inputMaterials = value; }
         }
-        Material OutputMaterial
+        public Material OutputMaterial
         {
             get { return _outputMaterial; }
             set { _outputMaterial = value; }
         }
+
 
     }
 }

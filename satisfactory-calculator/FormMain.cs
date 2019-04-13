@@ -24,7 +24,6 @@ namespace satisfactory_calculator
 			pictureBoxSatisfactoryIcon.BringToFront();
 			pictureBoxSatisfactoryIcon.SizeMode = PictureBoxSizeMode.StretchImage;
 			pictureBoxSatisfactoryIcon.Image = Image.FromFile("../../Images/Satisfactory-original.png");
-
             
 		}
 
@@ -127,5 +126,20 @@ namespace satisfactory_calculator
             }
         }
 
+		private void comboBoxMachine_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			Console.WriteLine(comboBoxMachine.SelectedItem);
+			comboBoxResource.Items.Clear();
+
+			foreach (Machine machine in Structures.Machines.ListAll.FindAll( m=> m.Name == comboBoxMachine.SelectedItem.ToString()))
+			{
+				foreach (Recipe recipe in Recipes.Smelter.Recipes)
+				{
+					comboBoxResource.Items.Add(recipe.Name);
+					comboBoxResource.SelectedIndex = 0;
+				}
+				
+			}
+		}
 	}
 }

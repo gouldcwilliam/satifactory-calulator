@@ -16,6 +16,13 @@ namespace satisfactory_calculator
 			PowerUsage = powerUsage;
 			Ingredients = ingredients;
 		}
+		public Machine(string name, int powerUsage, Recipe recipe, List<Material> ingredients)
+		{
+			Name = name;
+			PowerUsage = powerUsage;
+			Recipe = recipe;
+			Ingredients = ingredients;
+		}
 		public Machine(string name, Material inputMaterial, Material outputMaterial, int powerUsage, List<Material> ingredients)
 		{
 			Name = name;
@@ -35,6 +42,7 @@ namespace satisfactory_calculator
 
         // Private Properties
         string _name = string.Empty;
+		Recipe _recipe = new Recipe();
         List<Material> _inputMaterials = new List<Material>();
         Material _outputMaterial = new Material();
         int _powerUsage = 0;
@@ -45,6 +53,11 @@ namespace satisfactory_calculator
 		{
 			get { return _name; }
 			set { _name = value; }
+		}
+		public Recipe Recipe
+		{
+			get { return _recipe; }
+			set { _recipe = value; }
 		}
 		public List<Material> InputMaterials
 		{
