@@ -74,5 +74,8 @@ namespace satisfactory_calculator
 				IdentifierString, machine.Name, machine.Ingredients.Count, machine.PowerUsage, machine.CurrentRecipe.Name, machine.AvailableRecipes.Count, machine.Total);
 			System.Diagnostics.Trace.WriteLine(message);
 		}
+
+
+
 	}
 }

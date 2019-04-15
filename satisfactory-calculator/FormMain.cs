@@ -14,16 +14,9 @@ namespace satisfactory_calculator
 {
 	public partial class FormMain : Form
 	{
-		public List<Machine> MyMachines = new List<Machine>();
-		class totals
-		{
-			public string Name;
-			public int Output;
-			public int Input;
-			public totals(string name, int output, int input)
-			{ Name = name; Output = output; Input = input; }
-		}
-		List<totals> globalTotals;
+		List<Machine> _MyMachines = new List<Machine>();
+        List<TotalInOut> _TotalsInOut = new List<TotalInOut>();
+
 		public FormMain()
 		{
 			InitializeComponent();
@@ -38,6 +31,8 @@ namespace satisfactory_calculator
 			}
 			comboBoxMachine.SelectedIndex = 0;
 
+            foreach(Material material in BuilderClass.Components.GetMaterials()) { _TotalsInOut.Add(new TotalInOut(material)); }
+            foreach(Material material in BuilderClass.Ores.GetMaterials()) { _TotalsInOut.Add(new TotalInOut(material)); }
 		}
 
 
@@ -138,10 +133,10 @@ namespace satisfactory_calculator
 			Machine machine = BuilderClass.Machines.GetMachines().Find(x => x.Name == comboBoxMachine.Text);
 			machine.CurrentRecipe = machine.AvailableRecipes.Find(x => x.Name == comboBoxResource.Text);
 			machine.Total = (int)numericUpDownQty.Value;
-			MyMachines.Add(machine);
-			dataGridViewMachines.Rows.Add(dataGridViewMachines.Rows.Count,machine.Name, machine.Total, machine.CurrentRecipe.Name, machine.CurrentRecipe.OutputMaterial.Qty * machine.Total);
+			_MyMachines.Add(machine);
+            dgvMachines.Rows.Add(dgvMachines.Rows.Count, machine.Name, machine.Total, machine.CurrentRecipe.Name, machine.CurrentRecipe.OutputMaterial.Qty * machine.Total);
 
-			Functions.myLog("MyMachines.Add(machine):\n - ", machine);
+            Functions.myLog("MyMachines.Add(machine):\n - ", machine);
 			Functions.myLog("dataGridViewMachines.Rows.Add(machine):\n - {0}", machine);
 
 		}
@@ -153,6 +148,22 @@ namespace satisfactory_calculator
 
 		#endregion
 
+        private void _MyMachines_AddMachine(Machine machine)
+        {
+            _MyMachines.Add(machine);
+            dgvMachines.Rows.Add(dgvMachines.Rows.Count, machine.Name, machine.Total, machine.CurrentRecipe.Name, machine.CurrentRecipe.OutputMaterial.Qty * machine.Total);
+
+            Functions.myLog("_MyMachines.Add(machine):\n - ", machine);
+            Functions.myLog("dataGridViewMachines.Rows.Add(machine):\n - {0}", machine);
+
+            // adds the input material as 'input' to _TotalsInOut
+            foreach(Material material in machine.CurrentRecipe.InputMaterials)
+            {
+                // finds matching material in list and adds the results of (recipe base qty * machine total)
+                _TotalsInOut.Find(x => x.Material == material).Input += (material.Qty * machine.Total);
+            }
+            _TotalsInOut.Find(x => x.Material == machine.CurrentRecipe.OutputMaterial).Output += (machine.CurrentRecipe.OutputMaterial.Qty * machine.Total);
+        }
 
 		private void dataGridViewGlobalTotals_AddMachineTotals(Machine machine)
 		{
@@ -174,7 +185,7 @@ namespace satisfactory_calculator
 			//	{
 			//		machine.CurrentRecipe.InputMaterials.Add(new)
 			//	}
-			}
+			//}
 			
 		}
 
@@ -228,19 +239,19 @@ namespace satisfactory_calculator
 
 		private void dataGridViewMachines_SelectionChanged(object sender, EventArgs e)
 		{
-			if (!(dataGridViewMachines.SelectedRows.Count > 0)) { return; }
+			if (!(dgvMachines.SelectedRows.Count > 0)) { return; }
 
-			int index = dataGridViewMachines.SelectedRows[0].Index;
-			dataGridViewInputs.Rows.Clear();
-			foreach (Material material in MyMachines[index].CurrentRecipe.InputMaterials)
+			int index = dgvMachines.SelectedRows[0].Index;
+			dgvUsage.Rows.Clear();
+			foreach (Material material in _MyMachines[index].CurrentRecipe.InputMaterials)
 			{
-				dataGridViewInputs.Rows.Add(material.Name, material.Qty * MyMachines[index].Total);
+				dgvUsage.Rows.Add(material.Name, material.Qty * _MyMachines[index].Total);
 				Functions.myLog(string.Format("dataGridViewInputs.Rows.Add(material.Name, material.Qty): - {0}\n - {1}", material.Name, material.Qty));
 			}
 			Functions.myLog(string.Format("dataGridViewMachines.SelectedRows[0].Index:\n - {0}", index.ToString()));
-			Functions.myLog("MyMachines[index]", MyMachines[index]);
+			Functions.myLog("MyMachines[index]", _MyMachines[index]);
 
-			dataGridViewInputs.Refresh();
+			dgvUsage.Refresh();
 		}
 	}
 }
