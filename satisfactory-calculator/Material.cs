@@ -31,11 +31,15 @@ namespace satisfactory_calculator
 		public double Qty;
 
 
-        public override string ToString()
-        {
-            return Name;
-        }
 
-
+		//public void IncreaseTotal(int amount)
+		//{
+		//	Qty = Qty * amount;
+		//}
+		public Material IncreaseTotal(Material material, int amount)
+		{
+			material.Qty = material.Qty * amount;
+			return material;
+		}
     }
 }

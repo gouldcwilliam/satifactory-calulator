@@ -16,10 +16,12 @@ namespace satisfactory_calculator
         {
             Name = name;
         }
+		
+		//public Structure IncreaseTotal(Structure structure, int amount)
 
-		public override string ToString()
-		{
-			return Name;
-		}
+		//{
+		//	structure.Ingredients.ForEach(x =>x= x.IncreaseTotal(x,amount));
+		//	return structure;
+		//}
 	}
 }

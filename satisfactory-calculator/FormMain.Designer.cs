@@ -36,10 +36,11 @@
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.comboBoxMachine = new System.Windows.Forms.ComboBox();
 			this.dataGridViewMachines = new System.Windows.Forms.DataGridView();
-			this.columnMachine = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.columnQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.columnOutputResource = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.columnOutputTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.columnMachinesIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.columnMachinesMachine = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.columnMachinesQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.columnMachinesOutputResource = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.columnMachinesOutputTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.panelTop = new System.Windows.Forms.Panel();
 			this.panelMaximize = new System.Windows.Forms.Panel();
 			this.panelClose = new System.Windows.Forms.Panel();
@@ -47,26 +48,26 @@
 			this.pictureBoxSatisfactoryIcon = new System.Windows.Forms.PictureBox();
 			this.groupBoxMachine = new System.Windows.Forms.GroupBox();
 			this.groupBoxQty = new System.Windows.Forms.GroupBox();
+			this.numericUpDownQty = new System.Windows.Forms.NumericUpDown();
 			this.groupBoxResource = new System.Windows.Forms.GroupBox();
 			this.comboBoxResource = new System.Windows.Forms.ComboBox();
 			this.buttonAdd = new System.Windows.Forms.Button();
-			this.dataGridMachineInput = new System.Windows.Forms.DataGridView();
+			this.dataGridViewInputs = new System.Windows.Forms.DataGridView();
 			this.columnMachineUsage = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.columnInputTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.buttonEdit = new System.Windows.Forms.Button();
-			this.dataGridViewTotals = new System.Windows.Forms.DataGridView();
+			this.dataGridViewGlobalTotals = new System.Windows.Forms.DataGridView();
 			this.columnResource = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.columnOutput = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.columnInput = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.numericUpDownQty = new System.Windows.Forms.NumericUpDown();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewMachines)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxSatisfactoryIcon)).BeginInit();
 			this.groupBoxMachine.SuspendLayout();
 			this.groupBoxQty.SuspendLayout();
-			this.groupBoxResource.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridMachineInput)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridViewTotals)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownQty)).BeginInit();
+			this.groupBoxResource.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewInputs)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewGlobalTotals)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// comboBoxMachine
@@ -80,9 +81,12 @@
 			this.comboBoxMachine.Size = new System.Drawing.Size(189, 21);
 			this.comboBoxMachine.TabIndex = 0;
 			this.comboBoxMachine.SelectedIndexChanged += new System.EventHandler(this.comboBoxMachine_SelectedIndexChanged);
+			this.comboBoxMachine.TextChanged += new System.EventHandler(this.comboBoxMachine_TextChanged);
 			// 
 			// dataGridViewMachines
 			// 
+			this.dataGridViewMachines.AllowUserToAddRows = false;
+			this.dataGridViewMachines.AllowUserToDeleteRows = false;
 			this.dataGridViewMachines.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
 			this.dataGridViewMachines.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -97,12 +101,15 @@
 			this.dataGridViewMachines.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			this.dataGridViewMachines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dataGridViewMachines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.columnMachine,
-            this.columnQty,
-            this.columnOutputResource,
-            this.columnOutputTotal});
+            this.columnMachinesIndex,
+            this.columnMachinesMachine,
+            this.columnMachinesQty,
+            this.columnMachinesOutputResource,
+            this.columnMachinesOutputTotal});
 			this.dataGridViewMachines.Location = new System.Drawing.Point(12, 58);
+			this.dataGridViewMachines.MultiSelect = false;
 			this.dataGridViewMachines.Name = "dataGridViewMachines";
+			this.dataGridViewMachines.ReadOnly = true;
 			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
 			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
 			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -112,30 +119,44 @@
 			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
 			this.dataGridViewMachines.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.dataGridViewMachines.RowHeadersVisible = false;
+			this.dataGridViewMachines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dataGridViewMachines.Size = new System.Drawing.Size(503, 540);
 			this.dataGridViewMachines.TabIndex = 1;
+			this.dataGridViewMachines.SelectionChanged += new System.EventHandler(this.dataGridViewMachines_SelectionChanged);
 			// 
-			// columnMachine
+			// columnMachinesIndex
 			// 
-			this.columnMachine.HeaderText = "Machine";
-			this.columnMachine.Name = "columnMachine";
+			this.columnMachinesIndex.HeaderText = "Index";
+			this.columnMachinesIndex.Name = "columnMachinesIndex";
+			this.columnMachinesIndex.ReadOnly = true;
+			this.columnMachinesIndex.Visible = false;
 			// 
-			// columnQty
+			// columnMachinesMachine
 			// 
-			this.columnQty.FillWeight = 40F;
-			this.columnQty.HeaderText = "Qty";
-			this.columnQty.Name = "columnQty";
+			this.columnMachinesMachine.HeaderText = "Machine";
+			this.columnMachinesMachine.Name = "columnMachinesMachine";
+			this.columnMachinesMachine.ReadOnly = true;
 			// 
-			// columnOutputResource
+			// columnMachinesQty
 			// 
-			this.columnOutputResource.HeaderText = "Output Resource";
-			this.columnOutputResource.Name = "columnOutputResource";
+			this.columnMachinesQty.FillWeight = 40F;
+			this.columnMachinesQty.HeaderText = "Qty";
+			this.columnMachinesQty.Name = "columnMachinesQty";
+			this.columnMachinesQty.ReadOnly = true;
 			// 
-			// columnOutputTotal
+			// columnMachinesOutputResource
 			// 
-			this.columnOutputTotal.FillWeight = 40F;
-			this.columnOutputTotal.HeaderText = "Total";
-			this.columnOutputTotal.Name = "columnOutputTotal";
+			this.columnMachinesOutputResource.FillWeight = 115F;
+			this.columnMachinesOutputResource.HeaderText = "Output Resource";
+			this.columnMachinesOutputResource.Name = "columnMachinesOutputResource";
+			this.columnMachinesOutputResource.ReadOnly = true;
+			// 
+			// columnMachinesOutputTotal
+			// 
+			this.columnMachinesOutputTotal.FillWeight = 40F;
+			this.columnMachinesOutputTotal.HeaderText = "Total";
+			this.columnMachinesOutputTotal.Name = "columnMachinesOutputTotal";
+			this.columnMachinesOutputTotal.ReadOnly = true;
 			// 
 			// panelTop
 			// 
@@ -218,6 +239,27 @@
 			this.groupBoxQty.TabStop = false;
 			this.groupBoxQty.Text = "Qty";
 			// 
+			// numericUpDownQty
+			// 
+			this.numericUpDownQty.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.numericUpDownQty.Location = new System.Drawing.Point(6, 20);
+			this.numericUpDownQty.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.numericUpDownQty.Name = "numericUpDownQty";
+			this.numericUpDownQty.Size = new System.Drawing.Size(50, 20);
+			this.numericUpDownQty.TabIndex = 17;
+			this.numericUpDownQty.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.numericUpDownQty.ValueChanged += new System.EventHandler(this.numericUpDownQty_ValueChanged);
+			// 
 			// groupBoxResource
 			// 
 			this.groupBoxResource.Controls.Add(this.comboBoxResource);
@@ -238,6 +280,7 @@
 			this.comboBoxResource.Name = "comboBoxResource";
 			this.comboBoxResource.Size = new System.Drawing.Size(153, 21);
 			this.comboBoxResource.TabIndex = 0;
+			this.comboBoxResource.TextChanged += new System.EventHandler(this.comboBoxResource_TextChanged);
 			// 
 			// buttonAdd
 			// 
@@ -249,12 +292,12 @@
 			this.buttonAdd.UseVisualStyleBackColor = true;
 			this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
 			// 
-			// dataGridMachineInput
+			// dataGridViewInputs
 			// 
-			this.dataGridMachineInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.dataGridViewInputs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.dataGridMachineInput.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			this.dataGridMachineInput.BackgroundColor = System.Drawing.SystemColors.Control;
+			this.dataGridViewInputs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			this.dataGridViewInputs.BackgroundColor = System.Drawing.SystemColors.Control;
 			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
 			dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
 			dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -262,13 +305,13 @@
 			dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
 			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
 			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridMachineInput.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-			this.dataGridMachineInput.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridMachineInput.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+			this.dataGridViewInputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+			this.dataGridViewInputs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridViewInputs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnMachineUsage,
             this.columnInputTotal});
-			this.dataGridMachineInput.Location = new System.Drawing.Point(521, 174);
-			this.dataGridMachineInput.Name = "dataGridMachineInput";
+			this.dataGridViewInputs.Location = new System.Drawing.Point(521, 187);
+			this.dataGridViewInputs.Name = "dataGridViewInputs";
 			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
 			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
 			dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -276,10 +319,10 @@
 			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
 			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
 			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridMachineInput.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-			this.dataGridMachineInput.RowHeadersVisible = false;
-			this.dataGridMachineInput.Size = new System.Drawing.Size(269, 109);
-			this.dataGridMachineInput.TabIndex = 14;
+			this.dataGridViewInputs.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+			this.dataGridViewInputs.RowHeadersVisible = false;
+			this.dataGridViewInputs.Size = new System.Drawing.Size(269, 109);
+			this.dataGridViewInputs.TabIndex = 14;
 			// 
 			// columnMachineUsage
 			// 
@@ -302,13 +345,13 @@
 			this.buttonEdit.UseVisualStyleBackColor = true;
 			this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
 			// 
-			// dataGridViewTotals
+			// dataGridViewGlobalTotals
 			// 
-			this.dataGridViewTotals.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.dataGridViewGlobalTotals.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-			this.dataGridViewTotals.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			this.dataGridViewTotals.BackgroundColor = System.Drawing.SystemColors.Control;
-			this.dataGridViewTotals.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+			this.dataGridViewGlobalTotals.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			this.dataGridViewGlobalTotals.BackgroundColor = System.Drawing.SystemColors.Control;
+			this.dataGridViewGlobalTotals.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
 			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
 			dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
 			dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -316,14 +359,14 @@
 			dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
 			dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
 			dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridViewTotals.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-			this.dataGridViewTotals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridViewTotals.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+			this.dataGridViewGlobalTotals.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+			this.dataGridViewGlobalTotals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridViewGlobalTotals.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnResource,
             this.columnOutput,
             this.columnInput});
-			this.dataGridViewTotals.Location = new System.Drawing.Point(521, 302);
-			this.dataGridViewTotals.Name = "dataGridViewTotals";
+			this.dataGridViewGlobalTotals.Location = new System.Drawing.Point(521, 302);
+			this.dataGridViewGlobalTotals.Name = "dataGridViewGlobalTotals";
 			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
 			dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
 			dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -331,10 +374,10 @@
 			dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
 			dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
 			dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridViewTotals.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-			this.dataGridViewTotals.RowHeadersVisible = false;
-			this.dataGridViewTotals.Size = new System.Drawing.Size(269, 296);
-			this.dataGridViewTotals.TabIndex = 16;
+			this.dataGridViewGlobalTotals.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+			this.dataGridViewGlobalTotals.RowHeadersVisible = false;
+			this.dataGridViewGlobalTotals.Size = new System.Drawing.Size(269, 296);
+			this.dataGridViewGlobalTotals.TabIndex = 16;
 			// 
 			// columnResource
 			// 
@@ -353,34 +396,14 @@
 			this.columnInput.HeaderText = "Input";
 			this.columnInput.Name = "columnInput";
 			// 
-			// numericUpDownQty
-			// 
-			this.numericUpDownQty.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.numericUpDownQty.Location = new System.Drawing.Point(6, 20);
-			this.numericUpDownQty.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-			this.numericUpDownQty.Name = "numericUpDownQty";
-			this.numericUpDownQty.Size = new System.Drawing.Size(50, 20);
-			this.numericUpDownQty.TabIndex = 17;
-			this.numericUpDownQty.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-			// 
 			// FormMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(802, 610);
-			this.Controls.Add(this.dataGridViewTotals);
+			this.Controls.Add(this.dataGridViewGlobalTotals);
 			this.Controls.Add(this.buttonEdit);
-			this.Controls.Add(this.dataGridMachineInput);
+			this.Controls.Add(this.dataGridViewInputs);
 			this.Controls.Add(this.buttonAdd);
 			this.Controls.Add(this.groupBoxResource);
 			this.Controls.Add(this.groupBoxQty);
@@ -399,10 +422,10 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxSatisfactoryIcon)).EndInit();
 			this.groupBoxMachine.ResumeLayout(false);
 			this.groupBoxQty.ResumeLayout(false);
-			this.groupBoxResource.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.dataGridMachineInput)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridViewTotals)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownQty)).EndInit();
+			this.groupBoxResource.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewInputs)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewGlobalTotals)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -421,19 +444,20 @@
 		private System.Windows.Forms.GroupBox groupBoxResource;
 		private System.Windows.Forms.ComboBox comboBoxResource;
 		private System.Windows.Forms.Button buttonAdd;
-		private System.Windows.Forms.DataGridView dataGridMachineInput;
+		private System.Windows.Forms.DataGridView dataGridViewInputs;
 		private System.Windows.Forms.Button buttonEdit;
-		private System.Windows.Forms.DataGridView dataGridViewTotals;
-		private System.Windows.Forms.DataGridViewTextBoxColumn columnMachine;
-		private System.Windows.Forms.DataGridViewTextBoxColumn columnQty;
-		private System.Windows.Forms.DataGridViewTextBoxColumn columnOutputResource;
-		private System.Windows.Forms.DataGridViewTextBoxColumn columnOutputTotal;
+		private System.Windows.Forms.DataGridView dataGridViewGlobalTotals;
 		private System.Windows.Forms.DataGridViewTextBoxColumn columnMachineUsage;
 		private System.Windows.Forms.DataGridViewTextBoxColumn columnInputTotal;
 		private System.Windows.Forms.DataGridViewTextBoxColumn columnResource;
 		private System.Windows.Forms.DataGridViewTextBoxColumn columnOutput;
 		private System.Windows.Forms.DataGridViewTextBoxColumn columnInput;
 		private System.Windows.Forms.NumericUpDown numericUpDownQty;
+		private System.Windows.Forms.DataGridViewTextBoxColumn columnMachinesIndex;
+		private System.Windows.Forms.DataGridViewTextBoxColumn columnMachinesMachine;
+		private System.Windows.Forms.DataGridViewTextBoxColumn columnMachinesQty;
+		private System.Windows.Forms.DataGridViewTextBoxColumn columnMachinesOutputResource;
+		private System.Windows.Forms.DataGridViewTextBoxColumn columnMachinesOutputTotal;
 	}
 }
 

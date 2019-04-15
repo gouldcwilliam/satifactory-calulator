@@ -8,13 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace satisfactory_calculator
 {
 	public partial class FormMain : Form
 	{
-		public List<Machine> MyMachines;
-
+		public List<Machine> MyMachines = new List<Machine>();
+		class totals
+		{
+			public string Name;
+			public int Output;
+			public int Input;
+			public totals(string name, int output, int input)
+			{ Name = name; Output = output; Input = input; }
+		}
+		List<totals> globalTotals;
 		public FormMain()
 		{
 			InitializeComponent();
@@ -112,30 +121,67 @@ namespace satisfactory_calculator
 				MessageBox.Show(string.Format("Invalid Machine: ' {0} '", comboBoxMachine.Text));
 				return;
 			}
-			Console.WriteLine("comboBoxMachine.Text: {0}", comboBoxMachine.Text);
-			if (! (101 > numericUpDownQty.Value) &&(numericUpDownQty.Value > 0))
+
+			if (!(101 > numericUpDownQty.Value) && (numericUpDownQty.Value > 0))
 			{
 				MessageBox.Show(string.Format("Invalid Qty: {0}", numericUpDownQty.Value));
 				return;
 			}
-			Console.WriteLine("numericUpDownQty.Value contains: {0}", numericUpDownQty.Value);
+
 			if (!comboBoxResource.Items.Contains(comboBoxResource.Text))
 			{
-				MessageBox.Show(string.Format("Invalid Resource: ' {0} '",comboBoxResource.Text));
+				MessageBox.Show(string.Format("Invalid Resource: ' {0} '", comboBoxResource.Text));
 				return;
 			}
-			Console.WriteLine("comboBoxResource.Text contains: {0}", comboBoxResource.Text);
+
+
+			Machine machine = BuilderClass.Machines.GetMachines().Find(x => x.Name == comboBoxMachine.Text);
+			machine.CurrentRecipe = machine.AvailableRecipes.Find(x => x.Name == comboBoxResource.Text);
+			machine.Total = (int)numericUpDownQty.Value;
+			MyMachines.Add(machine);
+			dataGridViewMachines.Rows.Add(dataGridViewMachines.Rows.Count,machine.Name, machine.Total, machine.CurrentRecipe.Name, machine.CurrentRecipe.OutputMaterial.Qty * machine.Total);
+
+			Functions.myLog("MyMachines.Add(machine):\n - ", machine);
+			Functions.myLog("dataGridViewMachines.Rows.Add(machine):\n - {0}", machine);
+
 		}
 
 		private void buttonEdit_Click(object sender, EventArgs e)
 		{
-
+			return;
 		}
 
-        #endregion
+		#endregion
 
 
-        private void test()
+		private void dataGridViewGlobalTotals_AddMachineTotals(Machine machine)
+		{
+			//foreach (Material material in machine.CurrentRecipe.InputMaterials)
+			//{
+			//	if (!(globalTotals.Count>0)) { return; }
+			//	material.Qty = material.Qty * machine.Total;
+			//	bool found = false;
+			//	foreach (totals totals in globalTotals)
+			//	{
+			//		if(totals.Name==material.Name)
+			//		{
+			//			globalTotals.Remove(totals);
+			//			globalTotals.Add(new totals(totals.Name,totals.Input+(material.Qty*machine.Total) )
+			//			found = true;
+			//		}
+			//	}
+			//	if(!found)
+			//	{
+			//		machine.CurrentRecipe.InputMaterials.Add(new)
+			//	}
+			}
+			
+		}
+
+
+
+
+		private void test()
         {
 			Functions.WriteToXmlFile<List<Machine>>("Machines.xml", BuilderClass.Machines.GetMachines());
 			foreach (Machine machine in BuilderClass.Machines.GetMachines())
@@ -159,9 +205,42 @@ namespace satisfactory_calculator
 			comboBoxResource.Items.Clear();
 			foreach (Recipe recipe in BuilderClass.Machines.GetMachines().Find(x => x.Name == comboBoxMachine.Text).AvailableRecipes)
 			{
+				Trace.WriteLine(string.Format("BuilderClass.Machines.GetMachines(): Recipe.Name:\n - {0}\n", recipe.Name));
 				comboBoxResource.Items.Add(recipe.Name);
 			}
 			comboBoxResource.SelectedIndex = 0;
+		}
+
+		private void comboBoxMachine_TextChanged(object sender, EventArgs e)
+		{
+			Trace.WriteLine(string.Format("comboBoxMachine.Text:\n - {0}\n", comboBoxMachine.Text));
+		}
+
+		private void numericUpDownQty_ValueChanged(object sender, EventArgs e)
+		{
+			Trace.WriteLine(string.Format("numericUpDownQty.Value:\n - {0}\n", numericUpDownQty.Value.ToString()));
+		}
+
+		private void comboBoxResource_TextChanged(object sender, EventArgs e)
+		{
+			Trace.WriteLine(string.Format("comboBoxResource.Text:\n - {0}\n", comboBoxResource.Text));
+		}
+
+		private void dataGridViewMachines_SelectionChanged(object sender, EventArgs e)
+		{
+			if (!(dataGridViewMachines.SelectedRows.Count > 0)) { return; }
+
+			int index = dataGridViewMachines.SelectedRows[0].Index;
+			dataGridViewInputs.Rows.Clear();
+			foreach (Material material in MyMachines[index].CurrentRecipe.InputMaterials)
+			{
+				dataGridViewInputs.Rows.Add(material.Name, material.Qty * MyMachines[index].Total);
+				Functions.myLog(string.Format("dataGridViewInputs.Rows.Add(material.Name, material.Qty): - {0}\n - {1}", material.Name, material.Qty));
+			}
+			Functions.myLog(string.Format("dataGridViewMachines.SelectedRows[0].Index:\n - {0}", index.ToString()));
+			Functions.myLog("MyMachines[index]", MyMachines[index]);
+
+			dataGridViewInputs.Refresh();
 		}
 	}
 }
