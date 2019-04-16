@@ -16,7 +16,7 @@ namespace satisfactory_calculator
 	{
 		List<Machine> _MyMachines = new List<Machine>();
         List<TotalInOut> _TotalsInOut = new List<TotalInOut>();
-
+        List<Material> _mats = new List<Material> { BuilderClass.Components.BioFuel, BuilderClass.Components.Cable };
 		public FormMain()
 		{
 			InitializeComponent();
@@ -33,7 +33,7 @@ namespace satisfactory_calculator
 
             foreach(Material material in BuilderClass.Components.GetMaterials()) { _TotalsInOut.Add(new TotalInOut(material)); }
             foreach(Material material in BuilderClass.Ores.GetMaterials()) { _TotalsInOut.Add(new TotalInOut(material)); }
-            foreach(TotalInOut total in _TotalsInOut) { dgvGlobalTotals.Rows.Add(total.Material.Name, total.Output, total.Input); }
+            _TotalInOut_RefreshAll();
 		}
 
 
@@ -104,8 +104,8 @@ namespace satisfactory_calculator
 		}
 		#endregion
 
+        /* BUTTON METHODS */
 
-		#region BUTTONS
 		private void buttonAdd_Click(object sender, EventArgs e)
 		{
 			if (!comboBoxMachine.Items.Contains(comboBoxMachine.Text))
@@ -126,25 +126,31 @@ namespace satisfactory_calculator
 				return;
 			}
 
-
+            // finds matching machine using the selected machine
 			Machine machine = BuilderClass.Machines.GetMachines().Find(x => x.Name == comboBoxMachine.Text);
+            // finds matching recipe using the selected resource
 			machine.CurrentRecipe = machine.AvailableRecipes.Find(x => x.Name == comboBoxResource.Text);
+            // sets the total # of machines to add
 			machine.Total = (int)numericUpDownQty.Value;
 			_MyMachines_AddMachine(machine);
-            //dgvMachines.Rows.Add(dgvMachines.Rows.Count, machine.Name, machine.Total, machine.CurrentRecipe.Name, machine.CurrentRecipe.OutputMaterial.Qty * machine.Total);
 
             Functions.myLog("MyMachines.Add(machine):\n - ", machine);
-			Functions.myLog("dataGridViewMachines.Rows.Add(machine):\n - {0}", machine);
-
 		}
 
 		private void buttonEdit_Click(object sender, EventArgs e)
 		{
+            WriteAllXMLs();
+            test();
 			return;
 		}
 
-		#endregion
 
+
+        /// <summary>
+        /// adds Machine to _MyMachine while factoring in the total property of the machine
+        /// ensures the input and output of the machine supplied is used
+        /// </summary>
+        /// <param name="machine"></param>
         private void _MyMachines_AddMachine(Machine machine)
         {
             _MyMachines.Add(machine);
@@ -153,36 +159,53 @@ namespace satisfactory_calculator
             Functions.myLog("_MyMachines.Add(machine):\n - ", machine);
             Functions.myLog("dataGridViewMachines.Rows.Add(machine):\n - {0}", machine);
 
-            // adds the input material as 'input' to _TotalsInOut
             foreach(Material material in machine.CurrentRecipe.InputMaterials)
             {
-                // finds matching material in list and adds the results of (recipe base qty * machine total)
-                foreach(TotalInOut total in _TotalsInOut)
-                {
-                    if (total.Material.Name == material.Name)
-                    {
-                        int i = _TotalsInOut.FindIndex(x => x.Material.Name == total.Material.Name);//.Input = total.Input + (total.Input * machine.Total); }
-                        double curInput = _TotalsInOut[i].Input;
-                        _TotalsInOut[i].Input = curInput + (material.Qty * machine.Total);
-                    }
-                }
-                //_TotalsInOut.Find(x => x.Material == material).Input += (material.Qty * machine.Total);
+                _TotalInOut_UpdateInputQty(material, machine.Total);
             }
-            //_TotalsInOut.Find(x => x.Material == machine.CurrentRecipe.OutputMaterial).Output += (machine.CurrentRecipe.OutputMaterial.Qty * machine.Total);
-            //
-
             _TotalInOut_RefreshAll();
             return;
         }
 
+        /// <summary>
+        /// finds matching material in list and updates the input qty
+        /// material.Qty * machine.Total
+        /// </summary>
+        /// <param name="material">material to update</param>
+        /// <param name="machineTotal">used to factor the qty increased</param>
+        private void _TotalInOut_UpdateInputQty(Material material, int machineTotal)
+        {
+            foreach (TotalInOut total in _TotalsInOut)
+            {
+                if (total.Material.Name != material.Name) continue;
+                total.Input = total.Input + (material.Qty * machineTotal);
+            }
+        }
+        /// <summary>
+        /// finds matching material in list and updates the ouptut qty
+        /// material.Qty * machine.Total
+        /// </summary>
+        /// <param name="material">material to update</param>
+        /// <param name="machineTotal">used to factor the qty increased</param>
+        private void _TotalInOut_UpdateOutputQty(Material material, int machineTotal)
+        {
+            foreach (TotalInOut total in _TotalsInOut)
+            {
+                if (total.Material.Name != material.Name) continue;
+                total.Output = total.Output + (material.Qty * machineTotal);
+            }
+        }
 
-
+        /// <summary>
+        /// Refreshes Global Totals (data grid view) when the totalinout list is updated
+        /// </summary>
 		private void _TotalInOut_RefreshAll()
 		{
             DataGridView dgv = dgvGlobalTotals;
             dgv.Rows.Clear();
             foreach (TotalInOut total in _TotalsInOut)
             {
+                if(total.Input==0 && total.Output==0) { continue; }
                 dgv.Rows.Add(total.Material.Name, total.Output, total.Input);
             }
             dgvGlobalTotals = dgv;
@@ -190,26 +213,19 @@ namespace satisfactory_calculator
 
 
 
-
-		private void test()
+        /// <summary>
+        /// Writes all my helper/builder classes to xml file during development phase
+        /// </summary>
+		private void WriteAllXMLs()
         {
 			Functions.WriteToXmlFile<List<Machine>>("Machines.xml", BuilderClass.Machines.GetMachines());
-			foreach (Machine machine in BuilderClass.Machines.GetMachines())
-			{
-				Console.WriteLine("machine: {0}", machine.Name);
-				foreach (Recipe recipe in machine.AvailableRecipes)
-				{
-					Console.WriteLine("\trecipe:  {0}", recipe.Name);
-					Console.WriteLine("\t\toutput material: {0}, {1}", recipe.OutputMaterial.Name, recipe.OutputMaterial.Qty);
-					foreach (Material material in recipe.InputMaterials)
-					{
-						Console.WriteLine("\t\tinput material: {0} {1}", material.Name, material.Qty);
-					}
-
-				}
-			}
+            Functions.WriteToXmlFile<List<Recipe>>("ConstructorRecipes.xml", BuilderClass.ConstructorRecipes.GetRecipes());
+            Functions.WriteToXmlFile<List<Material>>("Components.xml", BuilderClass.Components.GetMaterials());
+            Functions.WriteToXmlFile<List<Material>>("Ores.xml", BuilderClass.Ores.GetMaterials());
+            Functions.WriteToXmlFile<List<Recipe>>("SmelterRecipes.xml", BuilderClass.SmelterRecipes.GetRecipes());
         }
 
+        #region Text Input Fields
 		private void comboBoxMachine_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			comboBoxResource.Items.Clear();
@@ -221,7 +237,7 @@ namespace satisfactory_calculator
 			comboBoxResource.SelectedIndex = 0;
 		}
 
-		private void comboBoxMachine_TextChanged(object sender, EventArgs e)
+        private void comboBoxMachine_TextChanged(object sender, EventArgs e)
 		{
 			Trace.WriteLine(string.Format("comboBoxMachine.Text:\n - {0}\n", comboBoxMachine.Text));
 		}
@@ -236,7 +252,9 @@ namespace satisfactory_calculator
 			Trace.WriteLine(string.Format("comboBoxResource.Text:\n - {0}\n", comboBoxResource.Text));
 		}
 
-		private void dataGridViewMachines_SelectionChanged(object sender, EventArgs e)
+        #endregion
+
+        private void dataGridViewMachines_SelectionChanged(object sender, EventArgs e)
 		{
 			if (!(dgvMachines.SelectedRows.Count > 0)) { return; }
 
@@ -245,12 +263,21 @@ namespace satisfactory_calculator
 			foreach (Material material in _MyMachines[index].CurrentRecipe.InputMaterials)
 			{
 				dgvUsage.Rows.Add(material.Name, material.Qty * _MyMachines[index].Total);
-				Functions.myLog(string.Format("dataGridViewInputs.Rows.Add(material.Name, material.Qty): - {0}\n - {1}", material.Name, material.Qty));
+				Functions.myLog(string.Format("dgvUsage.Rows.Add(material.Name, material.Qty * _MyMachines[index].Total): - {0}\n - {1}", material.Name, material.Qty));
 			}
 			Functions.myLog(string.Format("dataGridViewMachines.SelectedRows[0].Index:\n - {0}", index.ToString()));
 			Functions.myLog("MyMachines[index]", _MyMachines[index]);
 
 			dgvUsage.Refresh();
 		}
+
+        private void test()
+        {
+            foreach(Material machine in _mats)
+            {
+                machine.Qty = 10;
+            }
+        }
+
 	}
 }
