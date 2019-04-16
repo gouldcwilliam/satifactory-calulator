@@ -33,6 +33,7 @@ namespace satisfactory_calculator
 
             foreach(Material material in BuilderClass.Components.GetMaterials()) { _TotalsInOut.Add(new TotalInOut(material)); }
             foreach(Material material in BuilderClass.Ores.GetMaterials()) { _TotalsInOut.Add(new TotalInOut(material)); }
+            foreach(TotalInOut total in _TotalsInOut) { dgvGlobalTotals.Rows.Add(total.Material.Name, total.Output, total.Input); }
 		}
 
 
@@ -46,14 +47,10 @@ namespace satisfactory_calculator
         public static extern bool ReleaseCapture();
         [DllImport("User32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-
-
         private void panelClose_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
         }
-
-
         private void panelMaximize_Click(object sender, EventArgs e)
 		{
 			if (WindowState == FormWindowState.Maximized)
@@ -133,8 +130,8 @@ namespace satisfactory_calculator
 			Machine machine = BuilderClass.Machines.GetMachines().Find(x => x.Name == comboBoxMachine.Text);
 			machine.CurrentRecipe = machine.AvailableRecipes.Find(x => x.Name == comboBoxResource.Text);
 			machine.Total = (int)numericUpDownQty.Value;
-			_MyMachines.Add(machine);
-            dgvMachines.Rows.Add(dgvMachines.Rows.Count, machine.Name, machine.Total, machine.CurrentRecipe.Name, machine.CurrentRecipe.OutputMaterial.Qty * machine.Total);
+			_MyMachines_AddMachine(machine);
+            //dgvMachines.Rows.Add(dgvMachines.Rows.Count, machine.Name, machine.Total, machine.CurrentRecipe.Name, machine.CurrentRecipe.OutputMaterial.Qty * machine.Total);
 
             Functions.myLog("MyMachines.Add(machine):\n - ", machine);
 			Functions.myLog("dataGridViewMachines.Rows.Add(machine):\n - {0}", machine);
@@ -160,33 +157,35 @@ namespace satisfactory_calculator
             foreach(Material material in machine.CurrentRecipe.InputMaterials)
             {
                 // finds matching material in list and adds the results of (recipe base qty * machine total)
-                _TotalsInOut.Find(x => x.Material == material).Input += (material.Qty * machine.Total);
+                foreach(TotalInOut total in _TotalsInOut)
+                {
+                    if (total.Material.Name == material.Name)
+                    {
+                        int i = _TotalsInOut.FindIndex(x => x.Material.Name == total.Material.Name);//.Input = total.Input + (total.Input * machine.Total); }
+                        double curInput = _TotalsInOut[i].Input;
+                        _TotalsInOut[i].Input = curInput + (material.Qty * machine.Total);
+                    }
+                }
+                //_TotalsInOut.Find(x => x.Material == material).Input += (material.Qty * machine.Total);
             }
-            _TotalsInOut.Find(x => x.Material == machine.CurrentRecipe.OutputMaterial).Output += (machine.CurrentRecipe.OutputMaterial.Qty * machine.Total);
+            //_TotalsInOut.Find(x => x.Material == machine.CurrentRecipe.OutputMaterial).Output += (machine.CurrentRecipe.OutputMaterial.Qty * machine.Total);
+            //
+
+            _TotalInOut_RefreshAll();
+            return;
         }
 
-		private void dataGridViewGlobalTotals_AddMachineTotals(Machine machine)
+
+
+		private void _TotalInOut_RefreshAll()
 		{
-			//foreach (Material material in machine.CurrentRecipe.InputMaterials)
-			//{
-			//	if (!(globalTotals.Count>0)) { return; }
-			//	material.Qty = material.Qty * machine.Total;
-			//	bool found = false;
-			//	foreach (totals totals in globalTotals)
-			//	{
-			//		if(totals.Name==material.Name)
-			//		{
-			//			globalTotals.Remove(totals);
-			//			globalTotals.Add(new totals(totals.Name,totals.Input+(material.Qty*machine.Total) )
-			//			found = true;
-			//		}
-			//	}
-			//	if(!found)
-			//	{
-			//		machine.CurrentRecipe.InputMaterials.Add(new)
-			//	}
-			//}
-			
+            DataGridView dgv = dgvGlobalTotals;
+            dgv.Rows.Clear();
+            foreach (TotalInOut total in _TotalsInOut)
+            {
+                dgv.Rows.Add(total.Material.Name, total.Output, total.Input);
+            }
+            dgvGlobalTotals = dgv;
 		}
 
 

@@ -356,6 +356,7 @@
             // 
             this.dgvGlobalTotals.AllowUserToAddRows = false;
             this.dgvGlobalTotals.AllowUserToDeleteRows = false;
+            this.dgvGlobalTotals.AllowUserToResizeRows = false;
             this.dgvGlobalTotals.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dgvGlobalTotals.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -365,6 +366,7 @@
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.NullValue = null;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -387,6 +389,7 @@
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvGlobalTotals.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvGlobalTotals.RowHeadersVisible = false;
+            this.dgvGlobalTotals.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dgvGlobalTotals.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvGlobalTotals.Size = new System.Drawing.Size(269, 296);
             this.dgvGlobalTotals.TabIndex = 16;
@@ -399,14 +402,14 @@
             // 
             // columnOutput
             // 
-            this.columnOutput.FillWeight = 40F;
+            this.columnOutput.FillWeight = 45F;
             this.columnOutput.HeaderText = "Output";
             this.columnOutput.Name = "columnOutput";
             this.columnOutput.ReadOnly = true;
             // 
             // columnInput
             // 
-            this.columnInput.FillWeight = 40F;
+            this.columnInput.FillWeight = 50F;
             this.columnInput.HeaderText = "Input";
             this.columnInput.Name = "columnInput";
             this.columnInput.ReadOnly = true;
@@ -464,15 +467,15 @@
 		private System.Windows.Forms.DataGridView dgvGlobalTotals;
 		private System.Windows.Forms.DataGridViewTextBoxColumn columnMachineUsage;
 		private System.Windows.Forms.DataGridViewTextBoxColumn columnInputTotal;
-		private System.Windows.Forms.DataGridViewTextBoxColumn columnResource;
-		private System.Windows.Forms.DataGridViewTextBoxColumn columnOutput;
-		private System.Windows.Forms.DataGridViewTextBoxColumn columnInput;
 		private System.Windows.Forms.NumericUpDown numericUpDownQty;
 		private System.Windows.Forms.DataGridViewTextBoxColumn columnMachinesIndex;
 		private System.Windows.Forms.DataGridViewTextBoxColumn columnMachinesMachine;
 		private System.Windows.Forms.DataGridViewTextBoxColumn columnMachinesQty;
 		private System.Windows.Forms.DataGridViewTextBoxColumn columnMachinesOutputResource;
 		private System.Windows.Forms.DataGridViewTextBoxColumn columnMachinesOutputTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnResource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnOutput;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnInput;
     }
 }
 
