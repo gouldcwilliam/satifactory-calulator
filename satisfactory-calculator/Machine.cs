@@ -44,15 +44,5 @@ namespace satisfactory_calculator
 			AvailableRecipes = availableRecipes;
 		}
 
-
-		//public Machine IncreaseTotal(Machine machine, int amount)
-		//{
-		//	machine.Ingredients.ForEach(x => x = x.IncreaseTotal(x,amount));
-		//	machine.PowerUsage = machine.PowerUsage * amount;
-		//	machine.CurrentRecipe = machine.CurrentRecipe.IncreaseTotal(machine.CurrentRecipe, amount);
-		//	machine.AvailableRecipes.ForEach(x => x= x.IncreaseTotal(x,amount));
-		//	return machine;
-		//}
-
 	}
 }

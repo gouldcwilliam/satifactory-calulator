@@ -53,15 +53,5 @@ namespace satisfactory_calculator
 			if ((input4 != null) && (qty4 > 0)) { InputMaterials.Add(new Material(input4, qty4)); }
 		}
 
-
-		//public Recipe IncreaseTotal(Recipe recipe, int amount)
-		//{
-		//	recipe.OutputMaterial = OutputMaterial.IncreaseTotal(OutputMaterial, amount);
-		//	recipe.InputMaterials.ForEach(x => x= x.IncreaseTotal(x,amount));
-		//	return recipe;
-		//}
-
-
-
 	}
 }

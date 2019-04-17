@@ -325,6 +325,7 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvUsage.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvUsage.RowHeadersVisible = false;
+            this.dgvUsage.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dgvUsage.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUsage.Size = new System.Drawing.Size(269, 109);
             this.dgvUsage.TabIndex = 14;
@@ -448,9 +449,11 @@
 
 		}
 
-		#endregion
+        #endregion
 
-		private System.Windows.Forms.ComboBox comboBoxMachine;
+
+
+        private System.Windows.Forms.ComboBox comboBoxMachine;
 		private System.Windows.Forms.DataGridView dgvMachines;
 		private System.Windows.Forms.PictureBox pictureBoxSatisfactoryIcon;
 		private System.Windows.Forms.Panel panelTop;

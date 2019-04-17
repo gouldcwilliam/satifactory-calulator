@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace satisfactory_calculator
 {
+    /// <summary>
+    /// Container for material total input and output
+    /// </summary>
     class TotalInOut
     {
         public Material Material;

@@ -8,6 +8,11 @@ namespace satisfactory_calculator
 {
 	public class Material
 	{
+        // Public Properties
+        public string Name = string.Empty;
+        public double Qty = 0;
+
+
 		// Constructors
         public Material() {; }
 		public Material(string name)
@@ -25,21 +30,5 @@ namespace satisfactory_calculator
             Qty = qty;
         }
 
-
-		// Public Properties
-		public string Name;
-		public double Qty;
-
-
-
-		//public void IncreaseTotal(int amount)
-		//{
-		//	Qty = Qty * amount;
-		//}
-		public Material IncreaseTotal(Material material, int amount)
-		{
-			material.Qty = material.Qty * amount;
-			return material;
-		}
     }
 }

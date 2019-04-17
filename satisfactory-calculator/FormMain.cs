@@ -10,47 +10,50 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 
+
 namespace satisfactory_calculator
 {
 	public partial class FormMain : Form
 	{
+        /* Declarations */
 		List<Machine> _MyMachines = new List<Machine>();
         List<TotalInOut> _TotalsInOut = new List<TotalInOut>();
-        List<Material> _mats = new List<Material> { BuilderClass.Components.BioFuel, BuilderClass.Components.Cable };
+
+        /* Main Constructor */
 		public FormMain()
 		{
 			InitializeComponent();
+
+            //_InitializeSettings();
 
 			pictureBoxSatisfactoryIcon.BringToFront();
 			pictureBoxSatisfactoryIcon.SizeMode = PictureBoxSizeMode.StretchImage;
 			pictureBoxSatisfactoryIcon.Image = Image.FromFile("../../Images/Satisfactory-original.png");
 
-			foreach (Machine machine in BuilderClass.Machines.GetMachines())
-			{
-				comboBoxMachine.Items.Add(machine.Name);
-			}
+            BuilderClass.Machines.GetMachines().ForEach(m => comboBoxMachine.Items.Add(m.Name));
 			comboBoxMachine.SelectedIndex = 0;
 
-            foreach(Material material in BuilderClass.Components.GetMaterials()) { _TotalsInOut.Add(new TotalInOut(material)); }
-            foreach(Material material in BuilderClass.Ores.GetMaterials()) { _TotalsInOut.Add(new TotalInOut(material)); }
+            BuilderClass.Components.GetMaterials().ForEach(m => _TotalsInOut.Add(new TotalInOut(m)));
+            BuilderClass.Ores.GetMaterials().ForEach(m => _TotalsInOut.Add(new TotalInOut(m)));
             _TotalInOut_RefreshAll();
 		}
 
 
+        /* Top Panel Stuff */
 
-
-        #region TOP PANELS
-
-        public const int WM_NCLBUTTONDOWN = 0xA1;
-        public const int HTCAPTION = 0x2;
+        #region For custom mousedown*/
+        const int WM_NCLBUTTONDOWN = 0xA1;
+        const int HTCAPTION = 0x2;
         [DllImport("User32.dll")]
-        public static extern bool ReleaseCapture();
+        static extern bool ReleaseCapture();
         [DllImport("User32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        static extern int SendMessage(System.IntPtr hWnd, int Msg, int wParam, int lParam);
+        #endregion
         private void panelClose_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
         }
+
         private void panelMaximize_Click(object sender, EventArgs e)
 		{
 			if (WindowState == FormWindowState.Maximized)
@@ -65,10 +68,12 @@ namespace satisfactory_calculator
 			}
 
 		}
+
         private void panelMinimize_Click(object sender, EventArgs e)
 		{
 			this.WindowState = FormWindowState.Minimized;
 		}
+
 		private void panelButton_MouseEnter(object sender, EventArgs e)
 		{
 			try
@@ -85,6 +90,7 @@ namespace satisfactory_calculator
 			}
 			catch (Exception ex) { Console.WriteLine(ex.Message); }
 		}
+
 		private void panelButton_MouseLeave(object sender, EventArgs e)
 		{
 			try
@@ -94,6 +100,7 @@ namespace satisfactory_calculator
 			}
 			catch (Exception ex) { Console.WriteLine(ex.Message); }
 		}
+
 		private void panelTop_MouseDown(object sender, MouseEventArgs e)
 		{
 			if (e.Button == MouseButtons.Left)
@@ -102,11 +109,43 @@ namespace satisfactory_calculator
 				SendMessage(Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
 			}
 		}
-		#endregion
+
+
+        /* TEXT INPUT */
+
+
+        private void comboBoxMachine_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBoxResource.Items.Clear();
+            foreach (Recipe recipe in BuilderClass.Machines.GetMachines().Find(x => x.Name == comboBoxMachine.Text).AvailableRecipes)
+            {
+                Trace.WriteLine(string.Format("BuilderClass.Machines.GetMachines(): Recipe.Name:\n - {0}\n", recipe.Name));
+                comboBoxResource.Items.Add(recipe.Name);
+            }
+            comboBoxResource.SelectedIndex = 0;
+        }
+
+        private void comboBoxMachine_TextChanged(object sender, EventArgs e)
+        {
+            Trace.WriteLine(string.Format("comboBoxMachine.Text:\n - {0}\n", comboBoxMachine.Text));
+        }
+
+        private void numericUpDownQty_ValueChanged(object sender, EventArgs e)
+        {
+            Trace.WriteLine(string.Format("numericUpDownQty.Value:\n - {0}\n", numericUpDownQty.Value.ToString()));
+        }
+
+        private void comboBoxResource_TextChanged(object sender, EventArgs e)
+        {
+            Trace.WriteLine(string.Format("comboBoxResource.Text:\n - {0}\n", comboBoxResource.Text));
+        }
+
+
 
         /* BUTTON METHODS */
 
-		private void buttonAdd_Click(object sender, EventArgs e)
+
+        private void buttonAdd_Click(object sender, EventArgs e)
 		{
 			if (!comboBoxMachine.Items.Contains(comboBoxMachine.Text))
 			{
@@ -146,6 +185,10 @@ namespace satisfactory_calculator
 
 
 
+        /* LIST'S METHODS, FUNCTIONS, HANDLERS */
+
+
+
         /// <summary>
         /// adds Machine to _MyMachine while factoring in the total property of the machine
         /// ensures the input and output of the machine supplied is used
@@ -163,10 +206,10 @@ namespace satisfactory_calculator
             {
                 _TotalInOut_UpdateInputQty(material, machine.Total);
             }
+            _TotalInOut_UpdateOutputQty(machine.CurrentRecipe.OutputMaterial, machine.Total);
             _TotalInOut_RefreshAll();
             return;
         }
-
         /// <summary>
         /// finds matching material in list and updates the input qty
         /// material.Qty * machine.Total
@@ -181,6 +224,7 @@ namespace satisfactory_calculator
                 total.Input = total.Input + (material.Qty * machineTotal);
             }
         }
+
         /// <summary>
         /// finds matching material in list and updates the ouptut qty
         /// material.Qty * machine.Total
@@ -195,7 +239,6 @@ namespace satisfactory_calculator
                 total.Output = total.Output + (material.Qty * machineTotal);
             }
         }
-
         /// <summary>
         /// Refreshes Global Totals (data grid view) when the totalinout list is updated
         /// </summary>
@@ -213,6 +256,7 @@ namespace satisfactory_calculator
 
 
 
+
         /// <summary>
         /// Writes all my helper/builder classes to xml file during development phase
         /// </summary>
@@ -224,35 +268,6 @@ namespace satisfactory_calculator
             Functions.WriteToXmlFile<List<Material>>("Ores.xml", BuilderClass.Ores.GetMaterials());
             Functions.WriteToXmlFile<List<Recipe>>("SmelterRecipes.xml", BuilderClass.SmelterRecipes.GetRecipes());
         }
-
-        #region Text Input Fields
-		private void comboBoxMachine_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			comboBoxResource.Items.Clear();
-			foreach (Recipe recipe in BuilderClass.Machines.GetMachines().Find(x => x.Name == comboBoxMachine.Text).AvailableRecipes)
-			{
-				Trace.WriteLine(string.Format("BuilderClass.Machines.GetMachines(): Recipe.Name:\n - {0}\n", recipe.Name));
-				comboBoxResource.Items.Add(recipe.Name);
-			}
-			comboBoxResource.SelectedIndex = 0;
-		}
-
-        private void comboBoxMachine_TextChanged(object sender, EventArgs e)
-		{
-			Trace.WriteLine(string.Format("comboBoxMachine.Text:\n - {0}\n", comboBoxMachine.Text));
-		}
-
-		private void numericUpDownQty_ValueChanged(object sender, EventArgs e)
-		{
-			Trace.WriteLine(string.Format("numericUpDownQty.Value:\n - {0}\n", numericUpDownQty.Value.ToString()));
-		}
-
-		private void comboBoxResource_TextChanged(object sender, EventArgs e)
-		{
-			Trace.WriteLine(string.Format("comboBoxResource.Text:\n - {0}\n", comboBoxResource.Text));
-		}
-
-        #endregion
 
         private void dataGridViewMachines_SelectionChanged(object sender, EventArgs e)
 		{
@@ -271,12 +286,13 @@ namespace satisfactory_calculator
 			dgvUsage.Refresh();
 		}
 
+
+        /* TESTING */
         private void test()
         {
-            foreach(Material machine in _mats)
-            {
-                machine.Qty = 10;
-            }
+
+            List<Material> materials = XMLSettings.Components;
+            return;
         }
 
 	}
