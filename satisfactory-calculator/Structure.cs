@@ -9,19 +9,12 @@ namespace satisfactory_calculator
     public class Structure
     {
         public string Name = string.Empty;
-        public List<Material> Ingredients = new List<Material>();
+        public List<Material> Ingredients;
 
         public Structure() { }
         public Structure(string name)
         {
             Name = name;
         }
-		
-		//public Structure IncreaseTotal(Structure structure, int amount)
-
-		//{
-		//	structure.Ingredients.ForEach(x =>x= x.IncreaseTotal(x,amount));
-		//	return structure;
-		//}
 	}
 }

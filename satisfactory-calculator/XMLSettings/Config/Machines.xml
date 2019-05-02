@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfMachine xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Machine>
+    <Name>Smelter</Name>
+    <Ingredients>
+      <Material>
+        <Name>Iron Rod</Name>
+        <Qty>5</Qty>
+      </Material>
+      <Material>
+        <Name>Wire</Name>
+        <Qty>8</Qty>
+      </Material>
+    </Ingredients>
+    <PowerUsage>4</PowerUsage>
+    <CurrentRecipe>
+      <Name />
+      <OutputMaterial>
+        <Name />
+        <Qty>0</Qty>
+      </OutputMaterial>
+      <InputMaterials />
+    </CurrentRecipe>
+    <AvailableRecipes>
+      <Recipe>
+        <Name>Iron Ingot</Name>
+        <OutputMaterial>
+          <Name>Iron Ingot</Name>
+          <Qty>30</Qty>
+        </OutputMaterial>
+        <InputMaterials>
+          <Material>
+            <Name>Iron Ore</Name>
+            <Qty>30</Qty>
+          </Material>
+        </InputMaterials>
+      </Recipe>
+      <Recipe>
+        <Name>Copper Ingot</Name>
+        <OutputMaterial>
+          <Name>Copper Ingot</Name>
+          <Qty>30</Qty>
+        </OutputMaterial>
+        <InputMaterials>
+          <Material>
+            <Name>Copper Ore</Name>
+            <Qty>30</Qty>
+          </Material>
+        </InputMaterials>
+      </Recipe>
+      <Recipe>
+        <Name>Caterium Ingot</Name>
+        <OutputMaterial>
+          <Name>Caterium Ingot</Name>
+          <Qty>60</Qty>
+        </OutputMaterial>
+        <InputMaterials>
+          <Material>
+            <Name>Caterium Ore</Name>
+            <Qty>15</Qty>
+          </Material>
+        </InputMaterials>
+      </Recipe>
+    </AvailableRecipes>
+    <Total>1</Total>
+  </Machine>
+  <Machine>
+    <Name>Constructor</Name>
+    <Ingredients>
+      <Material>
+        <Name>Reinforeced Iron Plate</Name>
+        <Qty>3</Qty>
+      </Material>
+      <Material>
+        <Name>Cable</Name>
+        <Qty>2</Qty>
+      </Material>
+    </Ingredients>
+    <PowerUsage>4</PowerUsage>
+    <CurrentRecipe>
+      <Name />
+      <OutputMaterial>
+        <Name />
+        <Qty>0</Qty>
+      </OutputMaterial>
+      <InputMaterials />
+    </CurrentRecipe>
+    <AvailableRecipes>
+      <Recipe>
+        <Name>Iron Plate</Name>
+        <OutputMaterial>
+          <Name>Iron Plate</Name>
+          <Qty>15</Qty>
+        </OutputMaterial>
+        <InputMaterials>
+          <Material>
+            <Name>Iron Ingot</Name>
+            <Qty>30</Qty>
+          </Material>
+        </InputMaterials>
+      </Recipe>
+      <Recipe>
+        <Name>Iron Rod</Name>
+        <OutputMaterial>
+          <Name>Iron Rod</Name>
+          <Qty>15</Qty>
+        </OutputMaterial>
+        <InputMaterials>
+          <Material>
+            <Name>Iron Ingot</Name>
+            <Qty>15</Qty>
+          </Material>
+        </InputMaterials>
+      </Recipe>
+      <Recipe>
+        <Name>Wire</Name>
+        <OutputMaterial>
+          <Name>Wire</Name>
+          <Qty>45</Qty>
+        </OutputMaterial>
+        <InputMaterials>
+          <Material>
+            <Name>Copper Ingot</Name>
+            <Qty>15</Qty>
+          </Material>
+        </InputMaterials>
+      </Recipe>
+      <Recipe>
+        <Name>Cable</Name>
+        <OutputMaterial>
+          <Name>Cable</Name>
+          <Qty>15</Qty>
+        </OutputMaterial>
+        <InputMaterials>
+          <Material>
+            <Name>Wire</Name>
+            <Qty>30</Qty>
+          </Material>
+        </InputMaterials>
+      </Recipe>
+      <Recipe>
+        <Name>Biomass (Leaves)</Name>
+        <OutputMaterial>
+          <Name>Biomass</Name>
+          <Qty>90</Qty>
+        </OutputMaterial>
+        <InputMaterials>
+          <Material>
+            <Name>Leaves</Name>
+            <Qty>10</Qty>
+          </Material>
+        </InputMaterials>
+      </Recipe>
+      <Recipe>
+        <Name>Concrete</Name>
+        <OutputMaterial>
+          <Name>Concrete</Name>
+          <Qty>15</Qty>
+        </OutputMaterial>
+        <InputMaterials>
+          <Material>
+            <Name>Limestone</Name>
+            <Qty>45</Qty>
+          </Material>
+        </InputMaterials>
+      </Recipe>
+      <Recipe>
+        <Name>Screw</Name>
+        <OutputMaterial>
+          <Name>Screw</Name>
+          <Qty>90</Qty>
+        </OutputMaterial>
+        <InputMaterials>
+          <Material>
+            <Name>Iron Ingot</Name>
+            <Qty>15</Qty>
+          </Material>
+        </InputMaterials>
+      </Recipe>
+      <Recipe>
+        <Name>Biomass (Wood)</Name>
+        <OutputMaterial>
+          <Name>Biomass</Name>
+          <Qty>375</Qty>
+        </OutputMaterial>
+        <InputMaterials>
+          <Material>
+            <Name>Wood</Name>
+            <Qty>75</Qty>
+          </Material>
+        </InputMaterials>
+      </Recipe>
+      <Recipe>
+        <Name>Steel Beam</Name>
+        <OutputMaterial>
+          <Name>Steel Beam</Name>
+          <Qty>10</Qty>
+        </OutputMaterial>
+        <InputMaterials>
+          <Material>
+            <Name>Steel Ingot</Name>
+            <Qty>30</Qty>
+          </Material>
+        </InputMaterials>
+      </Recipe>
+      <Recipe>
+        <Name>Steel Pipe</Name>
+        <OutputMaterial>
+          <Name>Steel Pipe</Name>
+          <Qty>15</Qty>
+        </OutputMaterial>
+        <InputMaterials>
+          <Material>
+            <Name>Steel Ingot</Name>
+            <Qty>15</Qty>
+          </Material>
+        </InputMaterials>
+      </Recipe>
+    </AvailableRecipes>
+    <Total>1</Total>
+  </Machine>
+  <Machine>
+    <Name>Manufacturer</Name>
+    <Ingredients>
+      <Material>
+        <Name>Heavy Modular Frame</Name>
+        <Qty>2</Qty>
+      </Material>
+      <Material>
+        <Name>Motor</Name>
+        <Qty>2</Qty>
+      </Material>
+      <Material>
+        <Name>Cable</Name>
+        <Qty>25</Qty>
+      </Material>
+      <Material>
+        <Name>Computer</Name>
+        <Qty>3</Qty>
+      </Material>
+    </Ingredients>
+    <PowerUsage>55</PowerUsage>
+    <CurrentRecipe>
+      <Name />
+      <OutputMaterial>
+        <Name />
+        <Qty>0</Qty>
+      </OutputMaterial>
+      <InputMaterials />
+    </CurrentRecipe>
+    <AvailableRecipes>
+      <Recipe>
+        <Name>Heavy Modular Frame</Name>
+        <OutputMaterial>
+          <Name>Heavy Modular Frame</Name>
+          <Qty>2</Qty>
+        </OutputMaterial>
+        <InputMaterials>
+          <Material>
+            <Name>Modular Frame</Name>
+            <Qty>5</Qty>
+          </Material>
+          <Material>
+            <Name>Steel Pipe</Name>
+            <Qty>15</Qty>
+          </Material>
+          <Material>
+            <Name>Encased Industrial Beam</Name>
+            <Qty>5</Qty>
+          </Material>
+          <Material>
+            <Name>Screw</Name>
+            <Qty>90</Qty>
+          </Material>
+        </InputMaterials>
+      </Recipe>
+      <Recipe>
+        <Name>Computer</Name>
+        <OutputMaterial>
+          <Name>Computer</Name>
+          <Qty>1.875</Qty>
+        </OutputMaterial>
+        <InputMaterials>
+          <Material>
+            <Name>Circuit Board</Name>
+            <Qty>5</Qty>
+          </Material>
+          <Material>
+            <Name>Cable</Name>
+            <Qty>12</Qty>
+          </Material>
+          <Material>
+            <Name>Plastic</Name>
+            <Qty>18</Qty>
+          </Material>
+          <Material>
+            <Name>Screw</Name>
+            <Qty>60</Qty>
+          </Material>
+        </InputMaterials>
+      </Recipe>
+      <Recipe>
+        <Name>Supercomputer</Name>
+        <OutputMaterial>
+          <Name>Supercomputer</Name>
+          <Qty>1.875</Qty>
+        </OutputMaterial>
+        <InputMaterials>
+          <Material>
+            <Name>Computer</Name>
+            <Qty>2</Qty>
+          </Material>
+          <Material>
+            <Name>A.I. Limiter</Name>
+            <Qty>2</Qty>
+          </Material>
+          <Material>
+            <Name>High-Speed Connector</Name>
+            <Qty>3</Qty>
+          </Material>
+          <Material>
+            <Name>Plastic</Name>
+            <Qty>21</Qty>
+          </Material>
+        </InputMaterials>
+      </Recipe>
+      <Recipe>
+        <Name>High-Speed Connector</Name>
+        <OutputMaterial>
+          <Name>High-Speed Connector</Name>
+          <Qty>2.5</Qty>
+        </OutputMaterial>
+        <InputMaterials>
+          <Material>
+            <Name>Quickwire</Name>
+            <Qty>40</Qty>
+          </Material>
+          <Material>
+            <Name>Cable</Name>
+            <Qty>10</Qty>
+          </Material>
+          <Material>
+            <Name>Plastic</Name>
+            <Qty>6</Qty>
+          </Material>
+        </InputMaterials>
+      </Recipe>
+      <Recipe>
+        <Name>Filter</Name>
+        <OutputMaterial>
+          <Name>Filter</Name>
+          <Qty>7.5</Qty>
+        </OutputMaterial>
+        <InputMaterials>
+          <Material>
+            <Name>Coal</Name>
+            <Qty>5</Qty>
+          </Material>
+          <Material>
+            <Name>Rubber</Name>
+            <Qty>2</Qty>
+          </Material>
+          <Material>
+            <Name>Fabric</Name>
+            <Qty>2</Qty>
+          </Material>
+        </InputMaterials>
+      </Recipe>
+      <Recipe>
+        <Name>Heavy Modular Frame - Alt</Name>
+        <OutputMaterial>
+          <Name>Heavy Modular Frame</Name>
+          <Qty>2.812</Qty>
+        </OutputMaterial>
+        <InputMaterials>
+          <Material>
+            <Name>Modular Frame</Name>
+            <Qty>8</Qty>
+          </Material>
+          <Material>
+            <Name>Steel Pipe</Name>
+            <Qty>36</Qty>
+          </Material>
+          <Material>
+            <Name>Encased Industrial Beam</Name>
+            <Qty>10</Qty>
+          </Material>
+          <Material>
+            <Name>Concrete</Name>
+            <Qty>25</Qty>
+          </Material>
+        </InputMaterials>
+      </Recipe>
+      <Recipe>
+        <Name>Computer - Alt</Name>
+        <OutputMaterial>
+          <Name>Computer</Name>
+          <Qty>2.812</Qty>
+        </OutputMaterial>
+        <InputMaterials>
+          <Material>
+            <Name>Circuit Board</Name>
+            <Qty>10</Qty>
+          </Material>
+          <Material>
+            <Name>Quickwire</Name>
+            <Qty>112</Qty>
+          </Material>
+          <Material>
+            <Name>Rubber</Name>
+            <Qty>48</Qty>
+          </Material>
+        </InputMaterials>
+      </Recipe>
+    </AvailableRecipes>
+    <Total>1</Total>
+  </Machine>
+</ArrayOfMachine>

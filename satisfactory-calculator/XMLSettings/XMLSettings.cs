@@ -34,7 +34,7 @@ namespace satisfactory_calculator
                     if (file.Contains("Materials."))
                     {
                         category = file.Replace(xmlPath + "\\Materials.", "").Replace(".xml", "");
-                        foreach(Material material in _ReadFromXmlFile<List<Material>>(file))
+                        foreach(Material material in ReadFromXmlFile<List<Material>>(file))
                         {
                             material.Category = category;
                             materials.Add(material);
@@ -69,7 +69,7 @@ namespace satisfactory_calculator
                 {
                     if (file.ToUpper().Contains("MACHINES."))
                     {
-                        machines.AddRange(_ReadFromXmlFile<List<Machine>>(file));
+                        machines.AddRange(ReadFromXmlFile<List<Machine>>(file));
                         Functions.myLog("Loaded xml file:\n - " + file);
                     }
                 }
@@ -102,7 +102,7 @@ namespace satisfactory_calculator
                     if (file.Contains("Recipes."))
                     {
                         parent = file.Replace(xmlPath + "\\Recipes.", "").Replace(".xml", "");
-                        foreach (Recipe recipe in _ReadFromXmlFile<List<Recipe>>(file))
+                        foreach (Recipe recipe in ReadFromXmlFile<List<Recipe>>(file))
                         {
                             recipe.Parent = parent;
                             recipes.Add(recipe);
@@ -136,9 +136,22 @@ namespace satisfactory_calculator
         /// <summary>
         /// Writes all my helper/builder classes to xml file during development phase
         /// </summary>
-        private void WriteAll()
+        public static bool WriteAll(string xmlPath = "Config")
         {
-            // TODO Add this
+            string path;
+            foreach (string category in new string[] {"Ores", "Components"})
+            {
+                path = string.Format("{0}\\Materials.{1}.xml", xmlPath, category);
+                WriteToXmlFile<List<Material>>(path, XMLSettings.AllMaterials.FindAll(m => m.Category == category));
+            }
+            foreach (string parent in new string[] { "Assembler","Constructor","Manufacturer","Smelter"})
+            {
+                path = string.Format("{0}\\Recipes.{1}.xml", xmlPath, parent);
+                WriteToXmlFile<List<Recipe>>(path, AllRecipes.FindAll(r => r.Parent == parent));
+            }
+            path = string.Format("{0}\\Machines.xml", xmlPath);
+            WriteToXmlFile<List<Machine>>(path, AllMachines);
+            return true;
         }
 
         /// <summary>
@@ -151,7 +164,7 @@ namespace satisfactory_calculator
         /// <param name="filePath">The file path to write the object instance to.</param>
         /// <param name="objectToWrite">The object instance to write to the file.</param>
         /// <param name="append">If false the file will be overwritten if it already exists. If true the contents will be appended to the file.</param>
-        private static void _WriteToXmlFile<T>(string filePath, T objectToWrite, bool append = false) where T : new()
+        public static void WriteToXmlFile<T>(string filePath, T objectToWrite, bool append = false) where T : new()
         {
             TextWriter writer = null;
             try
@@ -174,7 +187,7 @@ namespace satisfactory_calculator
         /// <typeparam name="T">The type of object to read from the file.</typeparam>
         /// <param name="filePath">The file path to read the object instance from.</param>
         /// <returns>Returns a new instance of the object read from the XML file.</returns>
-        private static T _ReadFromXmlFile<T>(string filePath) where T : new()
+        public static T ReadFromXmlFile<T>(string filePath) where T : new()
         {
             TextReader reader = null;
             try

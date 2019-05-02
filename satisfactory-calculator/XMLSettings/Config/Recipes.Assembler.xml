@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfRecipe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Recipe>
+    <Name>Reinforced Iron Plate</Name>
+    <OutputMaterial>
+      <Name>Reinforced Iron Plate</Name>
+      <Qty>5</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Iron Plate</Name>
+        <Qty>20</Qty>
+      </Material>
+	  <Material>
+        <Name>Screw</Name>
+        <Qty>120</Qty>
+      </Material>
+    </InputMaterials>
+	</Recipe>
+  <Recipe>
+    <Name>Rotor</Name>
+    <OutputMaterial>
+      <Name>Rotor</Name>
+      <Qty>6</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Iron Rod</Name>
+        <Qty>18</Qty>
+      </Material>
+	  <Material>
+        <Name>Screw</Name>
+        <Qty>132</Qty>
+      </Material>
+    </InputMaterials>
+	 </Recipe>
+  <Recipe>
+    <Name>Modular Frame</Name>
+    <OutputMaterial>
+      <Name>Modular Frame</Name>
+      <Qty>4</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Reinforced Iron Plate</Name>
+        <Qty>12</Qty>
+      </Material>
+	  <Material>
+        <Name>Iron Rod</Name>
+        <Qty>23</Qty>
+      </Material>
+    </InputMaterials>	
+	 </Recipe>
+  <Recipe>
+    <Name>Encased Industrial Beam</Name>
+    <OutputMaterial>
+      <Name>Encased Industrial Beam</Name>
+      <Qty>4</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Steel Beam</Name>
+        <Qty>16</Qty>
+      </Material>
+	  <Material>
+        <Name>Concrete</Name>
+        <Qty>20</Qty>
+      </Material>
+    </InputMaterials>	
+	 </Recipe>
+  <Recipe>
+    <Name>Stator</Name>
+    <OutputMaterial>
+      <Name>Stator</Name>
+      <Qty>6</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Steel Pipe</Name>
+        <Qty>18</Qty>
+      </Material>
+	  <Material>
+        <Name>Wire</Name>
+        <Qty>60</Qty>
+      </Material>
+    </InputMaterials>
+	 </Recipe>
+  <Recipe>
+    <Name>Motor</Name>
+    <OutputMaterial>
+      <Name>Motor</Name>
+      <Qty>5</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Rotor</Name>
+        <Qty>10</Qty>
+      </Material>
+	  <Material>
+        <Name>Stator</Name>
+        <Qty>10</Qty>
+      </Material>
+    </InputMaterials>
+	 </Recipe>
+  <Recipe>
+    <Name>Fabric</Name>
+    <OutputMaterial>
+      <Name>Fabric</Name>
+      <Qty>15</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Mycelia</Name>
+        <Qty>15</Qty>
+      </Material>
+	  <Material>
+        <Name>Leaves</Name>
+        <Qty>30</Qty>
+      </Material>
+    </InputMaterials>
+	 </Recipe>
+  <Recipe>
+    <Name>Circuit Board</Name>
+    <OutputMaterial>
+      <Name>Circuit Board</Name>
+      <Qty>5</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Wire</Name>
+        <Qty>60</Qty>
+      </Material>
+	  <Material>
+        <Name>Plastic</Name>
+        <Qty>30</Qty>
+      </Material>
+    </InputMaterials>
+	 </Recipe>
+  <Recipe>
+    <Name>A.I. Limiter</Name>
+    <OutputMaterial>
+      <Name>A.I. Limiter</Name>
+      <Qty>5</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Circuit Board</Name>
+        <Qty>5</Qty>
+      </Material>
+	  <Material>
+        <Name>Quickwire</Name>
+        <Qty>90</Qty>
+      </Material>
+    </InputMaterials>
+	 </Recipe>
+	  <Recipe>
+    <Name>Reinforced Iron Plate - ALT1</Name>
+    <OutputMaterial>
+      <Name>Reinforced Iron Plate - ALT1</Name>
+      <Qty>7.5</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Iron Plate</Name>
+        <Qty>25</Qty>
+      </Material>
+	  <Material>
+        <Name>Screw</Name>
+        <Qty>60</Qty>
+      </Material>
+    </InputMaterials>
+	 </Recipe>
+	  <Recipe>
+    <Name>Reinforced Iron Plate - ALT2</Name>
+    <OutputMaterial>
+      <Name>Reinforced Iron Plate - ALT2</Name>
+      <Qty>7.5</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Iron Plate</Name>
+        <Qty>15</Qty>
+      </Material>
+	  <Material>
+        <Name>Wire</Name>
+        <Qty>75</Qty>
+      </Material>
+    </InputMaterials>
+	 </Recipe>
+	  <Recipe>
+    <Name>Encased Industrial Beam - ALT</Name>
+    <OutputMaterial>
+      <Name>Encased Industrial Beam - ALT</Name>
+      <Qty>6</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Steel Pipe</Name>
+        <Qty>36</Qty>
+      </Material>
+	  <Material>
+        <Name>Concrete</Name>
+        <Qty>20</Qty>
+      </Material>
+    </InputMaterials>
+	 </Recipe>
+	  <Recipe>
+    <Name>Modular Frame - ALT</Name>
+    <OutputMaterial>
+      <Name>Modular Frame - ALT</Name>
+      <Qty>6</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Reinforced Iron Plate</Name>
+        <Qty>12</Qty>
+      </Material>
+	  <Material>
+        <Name>Steel Pipe</Name>
+        <Qty>12</Qty>
+      </Material>
+    </InputMaterials>
+	 </Recipe>
+	  <Recipe>
+    <Name>Rotor - ALT</Name>
+    <OutputMaterial>
+      <Name>Rotor - ALT</Name>
+      <Qty>9</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Steel Pipe</Name>
+        <Qty>18</Qty>
+      </Material>
+	  <Material>
+        <Name>Wire</Name>
+        <Qty>60</Qty>
+      </Material>
+    </InputMaterials>
+	 </Recipe>
+	  <Recipe>
+    <Name>Stator - ALT</Name>
+    <OutputMaterial>
+      <Name>Stator - ALT</Name>
+      <Qty>9</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Steel Pipe</Name>
+        <Qty>18</Qty>
+      </Material>
+	  <Material>
+        <Name>Quickwire</Name>
+        <Qty>75</Qty>
+      </Material>
+    </InputMaterials>
+	 </Recipe>
+	  <Recipe>
+    <Name>Cable - ALT</Name>
+    <OutputMaterial>
+      <Name>Cable - ALT</Name>
+      <Qty>37.5</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Wire</Name>
+        <Qty>22.5</Qty>
+      </Material>
+	  <Material>
+        <Name>Rubber</Name>
+        <Qty>15</Qty>
+      </Material>
+    </InputMaterials>
+	 </Recipe>
+	  <Recipe>
+    <Name>Circuit Board - ALT1</Name>
+    <OutputMaterial>
+      <Name>Circuit Board - ALT1</Name>
+      <Qty>7.5</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Rubber</Name>
+        <Qty>40</Qty>
+      </Material>
+	  <Material>
+        <Name>Wire</Name>
+        <Qty>60</Qty>
+      </Material>
+    </InputMaterials>
+	 </Recipe>
+	  <Recipe>
+    <Name>Circuit Board - ALT2</Name>
+    <OutputMaterial>
+      <Name>Circuit Board - ALT2</Name>
+      <Qty>7.5</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Plastic</Name>
+        <Qty>30</Qty>
+      </Material>
+	  <Material>
+        <Name>Quickwire</Name>
+        <Qty>80</Qty>
+      </Material>
+    </InputMaterials>
+	 </Recipe>
+	  <Recipe>
+    <Name>Quickwire</Name>
+    <OutputMaterial>
+      <Name>Quickwire</Name>
+      <Qty>90</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Caterium Ingot</Name>
+        <Qty>7.5</Qty>
+      </Material>
+	  <Material>
+        <Name>Copper Ingot</Name>
+        <Qty>15</Qty>
+      </Material>
+    </InputMaterials>
+	 </Recipe>
+</ArrayOfRecipe>

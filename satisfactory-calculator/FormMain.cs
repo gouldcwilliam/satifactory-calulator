@@ -31,7 +31,7 @@ namespace satisfactory_calculator
 
             // For each machine in XMLSettings.AllMachines Add the Machine to the drop down box
             XMLSettings.AllMachines.ForEach(m => comboBoxMachine.Items.Add(m.Name));
-			comboBoxMachine.SelectedIndex = 0;
+			if(comboBoxMachine.Items.Count>0) comboBoxMachine.SelectedIndex = 0;
             
             // For each material in XMLSettings.AllMaterials Add the material to _UsersTotalsInOut
             XMLSettings.AllMaterials.ForEach(m => _UsersTotalsInOut.Add(new TotalInOut(m)));
@@ -279,6 +279,8 @@ namespace satisfactory_calculator
         /* TESTING */
         private void test()
         {
+            XMLSettings.WriteAll("Test");
+            XMLSettings.ReadAll("Test");
             return;
         }
 

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfMaterial xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Material>
+    <Name>Iron Ingot</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Iron Plate</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Iron Rod</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Copper Ingot</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Wire</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Cable</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Biomass</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Concrete</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Screw</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Reinforeced Iron Plate</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Rotor</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Modular Frame</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Steel Ingot</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Steel Beam</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Steel Pipe</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Encased Industrial Beam</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Caterium Ingot</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Leaves</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Wood</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Mycelia</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Flower Petals</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Color Cartridge</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Spike Rebar</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Quickwire</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Biofuel</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Green Power Slug</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Yellow Power Slug</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Purple Power Slug</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Power Shard</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Carpace</Name>
+    <Qty>0</Qty>
+  </Material>
+</ArrayOfMaterial>

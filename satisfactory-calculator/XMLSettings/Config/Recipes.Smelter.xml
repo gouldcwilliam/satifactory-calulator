@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfRecipe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Recipe>
+    <Name>Iron Ingot</Name>
+    <OutputMaterial>
+      <Name>Iron Ingot</Name>
+      <Qty>30</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Iron Ore</Name>
+        <Qty>30</Qty>
+      </Material>
+    </InputMaterials>
+  </Recipe>
+  <Recipe>
+    <Name>Copper Ingot</Name>
+    <OutputMaterial>
+      <Name>Copper Ingot</Name>
+      <Qty>30</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Copper Ore</Name>
+        <Qty>30</Qty>
+      </Material>
+    </InputMaterials>
+  </Recipe>
+  <Recipe>
+    <Name>Caterium Ingot</Name>
+    <OutputMaterial>
+      <Name>Caterium Ingot</Name>
+      <Qty>60</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Caterium Ore</Name>
+        <Qty>15</Qty>
+      </Material>
+    </InputMaterials>
+  </Recipe>
+</ArrayOfRecipe>

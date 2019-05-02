@@ -10,17 +10,16 @@ namespace satisfactory_calculator
 	{
         // Public Properties
         public string Name = string.Empty;
-        public double Qty = 0;
-        [System.Xml.Serialization.XmlIgnore]
-        public string Category = string.Empty;
 
+        public double Qty;
+        public bool ShouldSerializeQty() { return Qty == 0; }
+
+        [System.Xml.Serialization.XmlIgnore] 
+        public string Category;
+        
 
 		// Constructors
         public Material() {; }
-		public Material(string name)
-		{
-            Name = name;
-		}
 		public Material(string name, double qty)
 		{
             Name = name;

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfMaterial xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Material>
+    <Name>Iron Ore</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Copper Ore</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Limestone</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Coal</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Crude Oil</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Caterium Ore</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Raw Quartz</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Sulfur</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Bauxite</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>S.A.M. Ore</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Silica</Name>
+    <Qty>0</Qty>
+  </Material>
+  <Material>
+    <Name>Uranium</Name>
+    <Qty>0</Qty>
+  </Material>
+</ArrayOfMaterial>

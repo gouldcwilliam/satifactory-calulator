@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfRecipe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Recipe>
+    <Name>Iron Plate</Name>
+    <OutputMaterial>
+      <Name>Iron Plate</Name>
+      <Qty>15</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Iron Ingot</Name>
+        <Qty>30</Qty>
+      </Material>
+    </InputMaterials>
+  </Recipe>
+  <Recipe>
+    <Name>Iron Rod</Name>
+    <OutputMaterial>
+      <Name>Iron Rod</Name>
+      <Qty>15</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Iron Ingot</Name>
+        <Qty>15</Qty>
+      </Material>
+    </InputMaterials>
+  </Recipe>
+  <Recipe>
+    <Name>Wire</Name>
+    <OutputMaterial>
+      <Name>Wire</Name>
+      <Qty>45</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Copper Ingot</Name>
+        <Qty>15</Qty>
+      </Material>
+    </InputMaterials>
+  </Recipe>
+  <Recipe>
+    <Name>Cable</Name>
+    <OutputMaterial>
+      <Name>Cable</Name>
+      <Qty>15</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Wire</Name>
+        <Qty>30</Qty>
+      </Material>
+    </InputMaterials>
+  </Recipe>
+  <Recipe>
+    <Name>Biomass (Leaves)</Name>
+    <OutputMaterial>
+      <Name>Biomass</Name>
+      <Qty>90</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Leaves</Name>
+        <Qty>10</Qty>
+      </Material>
+    </InputMaterials>
+  </Recipe>
+  <Recipe>
+    <Name>Concrete</Name>
+    <OutputMaterial>
+      <Name>Concrete</Name>
+      <Qty>15</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Limestone</Name>
+        <Qty>45</Qty>
+      </Material>
+    </InputMaterials>
+  </Recipe>
+  <Recipe>
+    <Name>Screw</Name>
+    <OutputMaterial>
+      <Name>Screw</Name>
+      <Qty>90</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Iron Ingot</Name>
+        <Qty>15</Qty>
+      </Material>
+    </InputMaterials>
+  </Recipe>
+  <Recipe>
+    <Name>Biomass (Wood)</Name>
+    <OutputMaterial>
+      <Name>Biomass</Name>
+      <Qty>375</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Wood</Name>
+        <Qty>75</Qty>
+      </Material>
+    </InputMaterials>
+  </Recipe>
+  <Recipe>
+    <Name>Steel Beam</Name>
+    <OutputMaterial>
+      <Name>Steel Beam</Name>
+      <Qty>10</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Steel Ingot</Name>
+        <Qty>30</Qty>
+      </Material>
+    </InputMaterials>
+  </Recipe>
+  <Recipe>
+    <Name>Steel Pipe</Name>
+    <OutputMaterial>
+      <Name>Steel Pipe</Name>
+      <Qty>15</Qty>
+    </OutputMaterial>
+    <InputMaterials>
+      <Material>
+        <Name>Steel Ingot</Name>
+        <Qty>15</Qty>
+      </Material>
+    </InputMaterials>
+  </Recipe>
+</ArrayOfRecipe>
