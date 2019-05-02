@@ -11,6 +11,8 @@ namespace satisfactory_calculator
         // Public Properties
         public string Name = string.Empty;
         public double Qty = 0;
+        [System.Xml.Serialization.XmlIgnore]
+        public string Category = string.Empty;
 
 
 		// Constructors
@@ -29,6 +31,6 @@ namespace satisfactory_calculator
             Name = material.Name;
             Qty = qty;
         }
-
+        
     }
 }

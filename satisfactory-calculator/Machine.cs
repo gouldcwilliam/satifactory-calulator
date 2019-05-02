@@ -12,6 +12,7 @@ namespace satisfactory_calculator
         public Recipe CurrentRecipe;
 		public List<Recipe> AvailableRecipes;
 		public int Total = 1;
+        
 
 		// Constructors
 		public Machine() { }

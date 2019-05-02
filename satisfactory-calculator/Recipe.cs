@@ -11,6 +11,8 @@ namespace satisfactory_calculator
 		public string Name = string.Empty;
         public Material OutputMaterial = new Material();
         public List<Material> InputMaterials = new List<Material>();
+        [System.Xml.Serialization.XmlIgnore]
+        public string Parent = string.Empty;
 
         public Recipe()
         {

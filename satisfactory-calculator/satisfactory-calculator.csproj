@@ -46,9 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BuilderClass\ConstructorRecipes.cs" />
-    <Compile Include="BuilderClass\ManufacturerRecipes.cs" />
-    <Compile Include="BuilderClass\SmelterRecipes.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,10 +54,7 @@
     </Compile>
     <Compile Include="Functions.cs" />
     <Compile Include="Machine.cs" />
-    <Compile Include="BuilderClass\Components.cs" />
-    <Compile Include="BuilderClass\Ores.cs" />
     <Compile Include="Recipe.cs" />
-    <Compile Include="BuilderClass\Machines.cs" />
     <Compile Include="Material.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
