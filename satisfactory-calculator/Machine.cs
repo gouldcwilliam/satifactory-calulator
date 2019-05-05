@@ -9,8 +9,13 @@ namespace satisfactory_calculator
 	public partial class Machine : Structure
 	{
         public double PowerUsage { get; set; }
+        [System.Xml.Serialization.XmlElement]
         public Recipe CurrentRecipe { get; set; }
-        public List<Recipe> AvailableRecipes { get; set; }
+        public bool ShouldSerializeCurrentRecipe()
+        {
+            return CurrentRecipe == new Recipe();
+        }
+
         [System.Xml.Serialization.XmlAttribute]
         public int Total { get; set; }
         public bool ShouldSerializeTotal() { return Total>1; }
@@ -20,36 +25,27 @@ namespace satisfactory_calculator
         public Machine()
         {
             Name = string.Empty;
-            Ingredients = null;
+            Ingredients = new List<Material>();
             PowerUsage = 0;
-            CurrentRecipe = null;
-            AvailableRecipes = null;
+            CurrentRecipe = new Recipe();
             Total = 0;
         }
-		public Machine(string name, List<Material> ingredients, double powerUsage, Recipe currentRecipe = null, List<Recipe> availableRecipes = null, int total = 0 )
+		public Machine(string name, List<Material> ingredients, double powerUsage, Recipe currentRecipe = null, int total = 0 )
 		{
 			Name = name;
 			Ingredients = ingredients;
 			PowerUsage = powerUsage;
 			CurrentRecipe = currentRecipe;
-            AvailableRecipes = availableRecipes;
+            //AvailableRecipes = availableRecipes;
             Total = total;
 		}
-		//public Machine(string name, List<Material> ingredients, double powerUsage, List<Recipe> availableRecipes)
-		//{
-		//	Name = name;
-		//	Ingredients = ingredients;
-		//	PowerUsage = powerUsage;
-		//	AvailableRecipes = availableRecipes;
-		//}
-		//public Machine(string name, List<Material> ingredients, double powerUsage, List<Recipe> availableRecipes, Recipe recipe )
-		//{
-		//	Name = name;
-		//	Ingredients = ingredients;
-		//	PowerUsage = powerUsage;
-		//	CurrentRecipe = recipe;
-		//	AvailableRecipes = availableRecipes;
-		//}
+
+        public double GetOutputRecipeTotal()
+        {
+       
+            return this.CurrentRecipe.OutputMaterial.Qty * this.Total;
+        }
+
 
 	}
 }

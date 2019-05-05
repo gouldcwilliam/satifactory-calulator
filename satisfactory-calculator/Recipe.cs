@@ -9,13 +9,37 @@ namespace satisfactory_calculator
     public class Recipe
     {
 		public string Name = string.Empty;
-        public Material OutputMaterial;
-        public List<Material> InputMaterials;
-        //[System.Xml.Serialization.XmlIgnore] // ignore this property when writing to file
-        public string Parent;
+        [System.Xml.Serialization.XmlElement]   public Material OutputMaterial { get; set; }
+        public bool ShouldSerializeOutputMaterial()
+        {
+            return OutputMaterial.Qty > 0 && !string.IsNullOrEmpty(OutputMaterial.Name);
+        }
+        [System.Xml.Serialization.XmlElement]   public double OutputMaterialQty
+        {
+            get {
+                return OutputMaterial.Qty;
+            }
+            set {
+                OutputMaterial.Qty = value ;
+            }
+        }
+        public bool ShouldSerializeOutputQty()
+        {
+            return OutputMaterial.Qty > 0 && string.IsNullOrEmpty(OutputMaterial.Name);
+        }
+        [System.Xml.Serialization.XmlArray]   public List<Material> InputMaterials { get; set; }
+        public bool ShouldSerializeInputMaterials()
+        {
+            return InputMaterials.Count > 0;
+        }
+
+        [System.Xml.Serialization.XmlIgnore]    public string Parent;
 
         public Recipe()
         {
+            Name = string.Empty;
+            OutputMaterial = new Material();
+            InputMaterials = new List<Material>();
             ;
         }
 		public Recipe(string name, Material outputMaterial, Material inputMaterial)
