@@ -46,6 +46,17 @@ namespace satisfactory_calculator
             return this.CurrentRecipe.OutputMaterial.Qty * this.Total;
         }
 
-
+        public bool IsEmpty()
+        {
+            return ((PowerUsage == 0)&&(CurrentRecipe.IsEmpty())&&(Total==0)&&(Ingredients.Count==0));
+        }
+        public void Replace(Machine machine)
+        {
+            Name = machine.Name;
+            Ingredients = machine.Ingredients;
+            PowerUsage = machine.PowerUsage;
+            CurrentRecipe = machine.CurrentRecipe;
+            Total = machine.Total;
+        }
 	}
 }

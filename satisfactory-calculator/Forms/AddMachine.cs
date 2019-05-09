@@ -56,5 +56,20 @@ namespace satisfactory_calculator.Forms
             }
             if (formatted != string.Empty) textBoxIngredients.Text = formatted;
         }
+
+        private void GroupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GroupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GroupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

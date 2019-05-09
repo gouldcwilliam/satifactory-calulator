@@ -34,5 +34,9 @@ namespace satisfactory_calculator
             Qty = qty;
         }
         
+        public bool IsEmpty()
+        {
+            return ((Name == string.Empty) && (Qty == 0));
+        }
     }
 }

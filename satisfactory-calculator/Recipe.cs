@@ -79,5 +79,10 @@ namespace satisfactory_calculator
 			if ((input4 != null) && (qty4 > 0)) { InputMaterials.Add(new Material(input4, qty4)); }
 		}
 
+
+        public bool IsEmpty()
+        {
+            return ((Name == string.Empty)&&(OutputMaterial.IsEmpty())&&(InputMaterials.Count==0));
+        }
 	}
 }

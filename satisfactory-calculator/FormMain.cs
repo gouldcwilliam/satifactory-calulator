@@ -340,16 +340,28 @@ namespace satisfactory_calculator
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            Forms.AddMachine addMachine = new Forms.AddMachine();
-            if (addMachine.ShowDialog() == DialogResult.OK)
+            Forms.EditSettings editSettings = new Forms.EditSettings();
+            if (editSettings.ShowDialog() == DialogResult.OK)
             {
-                _newMachines.Add(addMachine.Machine);
+                if (editSettings.Machine.Name != string.Empty) { _newMachines.Add(editSettings.Machine); }
             }
         }
 
         private void Button3_Click(object sender, EventArgs e)
         {
             List<Machine> machines = XMLSettings.AllMachines;
+            foreach(Machine newMachine in _newMachines)
+            {
+                foreach(Machine machine in machines.FindAll(m=>newMachine.Name==m.Name))
+                {
+                    string msg = string.Format("There is already a machine with the name: {0}\r\nWould you like to replace it?",machine.Name);
+                    if(DialogResult.Yes == MessageBox.Show(msg, "Duplicate Machine", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                    {
+                        machine.Replace(newMachine);
+                        _newMachines.Remove(newMachine);
+                    }
+                }
+            }
             machines.AddRange(_newMachines);
             XMLSettings.WriteToXmlFile("Config\\Machines.xml", machines);
         }

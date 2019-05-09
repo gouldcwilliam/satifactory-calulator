@@ -12,37 +12,51 @@ namespace satisfactory_calculator.Forms
 {
     public partial class EditSettings : Form
     {
+
+        public Machine Machine { get { return _machine; } }
+        Machine _machine;
         public EditSettings()
         {
             InitializeComponent();
-
-            Init_TabPageMachines();
+            _machine = new Machine();
         }
 
-        private void Init_TabPageMachines()
+
+
+
+        private void ButtonAdd_Click(object sender, EventArgs e)
         {
-            treeViewMachines.Nodes.Clear();
-
-            int m = 0; // machine index
-            foreach (Machine machine in XMLSettings.AllMachines)
+            try
             {
-                treeViewMachines.Nodes.Add("Machine: " + machine.Name);
-                treeViewMachines.Nodes[m].Nodes.Add(machine.Name);
-                treeViewMachines.Nodes[m].Nodes.Add("Ingredients: " + machine.Name);
-                
-                int i = 0; // ingredient index
-                foreach (Material ingredient in machine.Ingredients)
+                _machine.Name = textBoxName.Text.Trim();
+                _machine.PowerUsage = Convert.ToDouble(textBox2.Text.Trim());
+                foreach (string line in textBoxIngredients.Lines)
                 {
-                    treeViewMachines.Nodes[m].Nodes[1].Nodes.Add("Material: " + ingredient.Name);
-                    treeViewMachines.Nodes[m].Nodes[1].Nodes[i].Nodes.Add(ingredient.Name);
-                    treeViewMachines.Nodes[m].Nodes[1].Nodes[i].Nodes.Add(ingredient.Qty.ToString());
-
-                    i++;
+                    if (line == string.Empty) continue;
+                    string[] ingreds = line.Split(',');
+                    _machine.Ingredients.Add(new Material(ingreds[1].Trim(), Convert.ToDouble(ingreds[0].Trim())));
                 }
-                treeViewMachines.Nodes[m].Nodes.Add(machine.PowerUsage.ToString());
-
-                m++;
+                this.DialogResult = DialogResult.OK;
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something happened : " + ex.Message);
+                this.DialogResult = DialogResult.No;
+            }
+        }
+
+        private void ButtonFormat_Click(object sender, EventArgs e)
+        {
+            string formatted = string.Empty;
+            foreach (string line in textBoxIngredients.Lines)
+            {
+                if (line == string.Empty) continue;
+                string newline = line.Replace(" × ", " , ");
+                newline = newline.Substring(0, newline.IndexOf(".png"));
+                if (formatted == string.Empty) formatted = newline;
+                else formatted += "\r\n" + newline;
+            }
+            if (formatted != string.Empty) textBoxIngredients.Text = formatted;
         }
 
         private void ButtonOK_Click(object sender, EventArgs e)
